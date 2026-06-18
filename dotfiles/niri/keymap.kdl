@@ -1,0 +1,172 @@
+binds {
+    // Keys consist of modifiers separated by + signs, followed by an XKB key name
+    // in the end. To find an XKB name for a particular key, you may use a program
+    // like wev.
+    //
+    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
+    // when running as a winit window.
+    //
+    // Most actions that you can bind here can also be invoked programmatically with
+    // `niri msg action do-something`.
+
+    // Mod-Shift-/, which is usually the same as Mod-?,
+    // shows a list of important hotkeys.
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+Return { spawn "kitty"; }
+    Mod+D { spawn-sh "killall wofi || wofi -a --show drun"; }
+    Mod+B { spawn-sh "/home/silver/.config/niri/scripts/bookmark.py"; }
+    Mod+R { spawn-sh "killall wofi || wofi --show run"; }
+    Mod+Z { spawn-sh "killall wofi || ~/.config/niri/scripts/websearch.sh"; }
+    Super+Shift+B { spawn-sh "killall waybar; waybar"; }
+    // Mod+Shift+Return { spawn-sh "env GTK_IM_MODULE=fcitx,QT_IM_MODULE=fcitx,XMODIFIERS=@im=fcitx /opt/zen-browser-bin/zen-bin"; }
+    Mod+Shift+Return { spawn-sh "qutebrowser"; }
+
+    Mod+SHIFT+M { spawn-sh "mpc toggle"; }
+
+    Mod+V { spawn-sh "killall wofi || ~/.config/niri/scripts/niri_recorder.sh"; }
+    // Mod+X { spawn-sh "~/.config/niri/scripts/screensht area"; }
+    // Mod+Shift+X { spawn-sh "~/.config/niri/scripts/screensht full"; }
+    // Mod+Ctrl+X { spawn-sh "~/.config/niri/scripts/screensht edit"; }
+
+    // Mod+Semicolon { spawn-sh "cliphist list | wmenu -b -p 'Clipboard' -l 12 -N '#282B38A3' -n '#F6339A' -M '#424659A3' -m '#F6339A' -S '#424659A3' -s '#F6339A' -f 'JetBrains Mono 14' | cliphist decode | wl-copy"; }
+    Mod+Semicolon { spawn-sh "~/.config/niri/scripts/cliphist.sh c"; }
+
+    // You can also use a shell. Do this if you need pipes, multiple commands, etc.
+    // Note: the entire command goes as a single argument in the end.
+    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    Mod+P { spawn-sh "~/.config/niri/scripts/niri_volumecontrol.sh i"; }
+    Mod+Shift+P { spawn-sh "~/.config/niri/scripts/niri_volumecontrol.sh d"; }
+
+    Mod+Shift+Q { close-window; }
+
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+N     { focus-window-or-workspace-down; }
+    Mod+E     { focus-window-or-workspace-up; }
+    // Mod+N     { spawn-sh "~/.config/niri/scripts/niri_circ_in_normal.py n"; }
+    // Mod+E     { spawn-sh "~/.config/niri/scripts/niri_circ_in_normal.py p"; }
+    Mod+I     { focus-column-or-monitor-right; }
+    
+    Super+H     { focus-monitor-left; }
+    Super+I     { focus-monitor-right; }
+
+    Mod+k    { switch-focus-between-floating-and-tiling; }
+
+    Mod+Shift+H     { move-column-left-or-to-monitor-left; }
+    Mod+Shift+N     { move-window-down-or-to-workspace-down; }
+    Mod+Shift+E     { move-window-up-or-to-workspace-up; }
+    Mod+Shift+I     { move-column-right-or-to-monitor-right; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    // You can bind mouse wheel scroll ticks using the following syntax.
+    // These binds will change direction based on the natural-scroll setting.
+    //
+    // To avoid scrolling through workspaces really fast, you can use
+    // the cooldown-ms property. The bind will be rate-limited to this value.
+    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    // Mod+MouseLeft { move-floating-window; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+L { toggle-overview; }
+
+    // The following binds move the focused window in and out of a column.
+    // If the window is alone, they will consume it into the nearby column to the side.
+    // If the window is already in a column, they will expel it out.
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+
+    // Consume one window from the right to the bottom of the focused column.
+    Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
+    Mod+Period { expel-window-from-column; }
+
+    Mod+Shift+Comma { spawn-sh "dunstctl close-all"; }
+
+    Mod+Minus { switch-preset-column-width; }
+    Mod+Shift+Equal { switch-preset-window-width; }
+    Mod+Ctrl+Minus { reset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+J { spawn "~/.config/niri/scripts/niri_master_layout.py"; }
+
+    // Expand the focused column to space not taken up by other fully visible columns.
+    // Makes the column "fill the rest of the space".
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+Ctrl+C { center-column; }
+
+    // Mod+Minus { set-column-width "-10%"; }
+    // Mod+Equal { set-column-width "+10%"; }
+
+    Mod+Space       { toggle-window-floating; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+
+    Print { screenshot-screen; }
+    Ctrl+Print { screenshot-screen; }
+    Mod+Print { screenshot; }
+    Mod+x { screenshot; }
+    Mod+Shift+x { screenshot-screen; }
+    Mod+Ctrl+x { screenshot-window; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    // Mod+SHift+L { quit; }
+    Mod+Shift+L { spawn "~/.config/niri/scripts/niri_wlogout.sh"; }
+
+    // INFO: special
+    Mod+U { spawn-sh "~/.config/niri/scripts/nvimAnywhere.sh"; }
+    Mod+M { spawn-sh "kitty -T music fish -c 'rmpc'"; }
+    Mod+S { spawn-sh "~/.config/niri/scripts/niri_scratchpad.py -t scratchpad -s 'kitty -T scratchpad'"; }
+    Mod+W { spawn-sh "~/.config/niri/scripts/niri_scratchpad.py -t kd -s 'kitty -T kd -e fish -c kd.sh'"; }
+    // Mod+C { focus-workspace "wechat"; }
+    Mod+C { spawn-sh "~/.config/niri/scripts/niri_scratchpad.py -t Weixin -s '~/Appimages/WeChatLinux_x86_64.AppImage'"; }
+    Mod+Q { spawn-sh "~/.config/niri/scripts/niri_scratchpad.py -t QQ -s 'linuxqq'"; }
+    Mod+G { spawn-sh "~/.config/niri/scripts/bw.py"; }
+}

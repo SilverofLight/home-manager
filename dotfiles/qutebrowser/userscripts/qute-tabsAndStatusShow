@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "config-cycle tabs.show always never" > $QUTE_FIFO
+echo "config-cycle statusbar.show always never" > $QUTE_FIFO

@@ -1,0 +1,29 @@
+#!/bin/env python3
+"""
+提取BV号并复制到剪贴板
+"""
+import os
+import subprocess
+
+url = os.environ['QUTE_URL']
+fifo = os.environ['QUTE_FIFO']
+
+if "bilibili" not in url:
+    with open(fifo, 'w') as f:
+        f.write("Not in bilibili\n")
+    exit(1)
+
+result = ""
+for i in url.split("/"):
+    if "BV" in i:
+        result = i
+
+if result == "":
+    with open(fifo, 'w') as f:
+        f.write("BV code not found\n")
+    exit(1)
+
+subprocess.run(['wl-copy', result])
+
+with open(fifo, 'w') as f:
+    f.write(f'message-info \'BV code \"{result}\" copy to clipboard\'\n')

@@ -1,0 +1,170 @@
+window-rule {
+    geometry-corner-radius 15
+    clip-to-geometry true
+    draw-border-with-background false
+}
+
+
+window-rule {
+    match app-id=r#"^kitty$"#
+    match app-id=r#"^neovide$"#
+
+    opacity 0.9
+
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+  match app-id=r#"^Steam$"#
+  match app-id=r#"^steam$"#
+  match app-id=r#"^Code$"#
+  match app-id=r#"^discord$"#
+  match app-id=r#"^QQ$"#
+  match app-id=r#"^yesplaymusic$"#
+
+  opacity 0.9
+}
+
+window-rule {
+  match app-id="^org.kde.polkit-kde-authentication-agent-1$"
+  match app-id="^pavucontrol$"
+  match title="^Media viewer$"
+  match title="^Volume Control$"
+  match title="^Picture-in-Picture$"
+  match app-id="^Viewnior$"
+  match title="^DevTools$"
+  match app-id="^file_progress$"
+  match app-id="^confirm$"
+  match app-id="^dialog$"
+  match app-id="^download$"
+  match app-id="^notification$"
+  match app-id="^error$"
+  match app-id="^confirmreset$"
+  match title="^Open File$"
+  match title="^branchdialog$"
+  match title="^Confirm to replace files"
+  match title="^File Operation Progress"
+  match title="^Volume Control$"
+
+  open-floating true
+}
+
+window-rule {
+  match title="^Floating_Term$"
+
+  open-floating true
+  default-window-height { fixed 700; }
+  default-column-width { fixed 1000; }
+}
+
+window-rule {
+  match app-id="^download$"
+  match title="^Open File$"
+  match title="^Save File$"
+  match title="^Volume Control$"
+
+  default-window-height { fixed 600; }
+  default-column-width { fixed 800; }
+}
+
+window-rule {
+  match title="^Weixin$"
+  match title="^QQ$"
+  // open-on-workspace "wechat"
+  default-column-width { proportion 0.6; }
+  default-window-height { proportion 0.6; }
+  open-floating true
+  opacity 0.9
+}
+
+window-rule {
+  match title="^scratchpad$"
+
+  default-column-width { proportion 0.4; }
+  default-window-height { proportion 0.992; }
+  open-floating true
+  default-floating-position x=5 y=5 relative-to="bottom-right"
+ 
+  background-effect {
+      blur false
+  }
+}
+
+window-rule {
+  match title="^kd$"
+
+  default-column-width { proportion 0.3; }
+  default-window-height { proportion 0.3; }
+  open-floating true
+  default-floating-position x=5 y=5 relative-to="top-right"
+}
+
+window-rule {
+  match title="^music$"
+  default-column-width { proportion 0.7; }
+  default-window-height { proportion 0.7; }
+  open-floating true
+}
+
+window-rule {
+  match title="^nvimAnywhere$"
+
+  default-column-width { proportion 0.4; }
+  default-window-height { proportion 0.4; }
+  open-floating true
+  default-floating-position x=5 y=5 relative-to="bottom-right"
+}
+
+window-rule {
+  match title="^godot_nvim$"
+  default-column-width { proportion 0.3; }
+}
+
+window-rule {
+  match app-id="^Godot$"
+  default-column-width { proportion 0.7; }
+}
+
+window-rule {
+  match title="^mpv-bilibili$"
+  match app-id="^mpv$"
+
+  default-column-width { proportion 0.7; }
+  default-window-height { proportion 0.7; }
+  open-floating true
+
+  background-effect {
+      blur true
+  }
+}
+
+window-rule {
+  match app-id="^blueman-manager$"
+
+  default-column-width { proportion 0.6; }
+  default-window-height { proportion 0.6; }
+  open-floating true
+}
+
+window-rule {
+  match app-id="^swayimg$"
+
+  open-maximized true
+ 
+  background-effect {
+      blur true
+  }
+}
+
+window-rule {
+    match app-id="^steam_app_3764200$"
+
+    open-fullscreen true
+}
+
+layer-rule {
+  match namespace="^wallpaper$"
+  place-within-backdrop true
+}

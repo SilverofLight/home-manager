@@ -1,0 +1,11 @@
+#!/bin/bash
+
+bv=$(echo "$QUTE_URL" | grep -oE 'BV[0-9A-Za-z]{10}' | head -n1)
+
+if [[ -n "$bv" ]]; then
+    notify-send "Bilibili" "$bv"
+    printf "%s" "$bv" | wl-copy
+    exit 0
+else
+    exit 1
+fi

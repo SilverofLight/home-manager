@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""
+Smart navigate-next userscript for qutebrowser.
+No third-party deps. Uses only stdlib.
+"""
+
+import re
+import os
+import html
+import xml.etree.ElementTree as ET
+import sys
+
+QUTE_FIFO  = os.environ.get("QUTE_FIFO")
+
+# 默认正则列表（不区分大小写）
+NEXT_REGEXES = [
+    r'\bnext\b',
+    r'\bmore\b',
+    r'\bnewer\b',
+    r'\bcontinue\b',
+    r'\b[>→≫]\b',
+    r'\b(>>|»)\b',
+    r"\b下一封\b",
+    r"\b下页\b",
+    r"\b下一页\b",
+    r"\b下一章\b",
+    r"\b后一页\b",
+    r"\b下一张\b",
+    r"\b›\b",
+    r"\b»\b",
+]
+PREV_REGEXES = [
+    r"\bprev(ious)?\b",
+    r"\bback\b",
+    r"\bolder\b",
+    r"\b[<←≪]\b",
+    r"\b(<<|«)\b",
+    r"\b上一封\b",
+    r"\b上页\b",
+    r"\b上一页\b",
+    r"\b上一章\b",
+    r"\b前一页\b",
+    r"\b上一张\b",
+    r"\b‹\b",
+    r"\b«\b",
+]
+
+def qute(cmd):
+    if not QUTE_FIFO: return
+    with open(QUTE_FIFO, "w") as f:
+        f.write(cmd.strip() + "\n")
+
+def text_of(elem):
+    """提取元素及其子节点的所有文本"""
+    return html.unescape(''.join(elem.itertext())).strip()
+
+def find_next_link(html_path):
+    with open(html_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # 1. 先按「id=nexp」抓任意标签，拿到 href（如果有）
+    m = re.search(r'<[^>\s]+\s+[^>]*\bid\s*=\s*["\']next["\'][^>]*>', content, flags=re.I)
+    if m:
+        # 尝试在同标签里直接提 href
+        href = re.search(r'\bhref\s*=\s*["\'](.*?)["\']', m.group(0), flags=re.I)
+        if href:
+            return href.group(1)
+        # 没有 href 就返回锚点，让 qute 去点击元素
+        return '#next'
+
+    # 2. 兜底：再扫一遍 <a> 文本匹配正则列表
+    for match in re.finditer(r'<a\s+[^>]*href=["\'](.*?)["\'][^>]*>(.*?)</a>', content, flags=re.I | re.S):
+        href, text = match.group(1), html.unescape(re.sub(r'<.*?>', '', match.group(2)))
+        if any(re.search(pat, text, re.I) for pat in NEXT_REGEXES):
+            return href
+
+    return None
+
+def find_prev_link(html_path):
+    with open(html_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # 1. 先按「id=prev」抓任意标签，拿到 href（如果有）
+    m = re.search(r'<[^>\s]+\s+[^>]*\bid\s*=\s*["\']prev["\'][^>]*>', content, flags=re.I)
+    if m:
+        # 尝试在同标签里直接提 href
+        href = re.search(r'\bhref\s*=\s*["\'](.*?)["\']', m.group(0), flags=re.I)
+        if href:
+            return href.group(1)
+        # 没有 href 就返回锚点，让 qute 去点击元素
+        return '#prev'
+
+    # 2. 兜底：再扫一遍 <a> 文本匹配正则列表
+    for match in re.finditer(r'<a\s+[^>]*href=["\'](.*?)["\'][^>]*>(.*?)</a>', content, flags=re.I | re.S):
+        href, text = match.group(1), html.unescape(re.sub(r'<.*?>', '', match.group(2)))
+        if any(re.search(pat, text, re.I) for pat in PREV_REGEXES):
+            return href
+
+    return None
+
+def main():
+    html_path = os.environ['QUTE_HTML']
+    if sys.argv[1] == 'next':
+        result = find_next_link(html_path)
+        if not result:
+            qute('message-info "No next link found"')
+            return
+        if result.startswith('#'):
+            qute(f'click-element id next')
+        else:
+            qute(f'open {result}')
+    elif sys.argv[1] == 'prev':
+        result = find_prev_link(html_path)
+        if not result:
+            qute('message-info "No prev link found"')
+            return
+        if result.startswith('#'):
+            qute(f'click-element id prev')
+        else:
+            qute(f'open {result}')
+
+if __name__ == '__main__':
+    main()

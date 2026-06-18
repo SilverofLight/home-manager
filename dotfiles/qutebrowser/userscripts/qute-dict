@@ -1,0 +1,24 @@
+#!/bin/bash
+# @author Silver Lee
+# @since 2025
+# qute-dict - search the word or sentence currently selected in qutebrowser with kd or trans
+
+# dictionary with kd
+
+DICT_TEMP=${XDG_RUNTIME_DIR}/qutebrowser/qutedict
+echo $QUTE_SELECTED_TEXT > "$DICT_TEMP" 2>&1
+
+word=$(cat "$DICT_TEMP")
+
+TERM="kitty -T Floating_Term --hold"
+CMD=""
+
+# 判断是否包含空格来区分单词和句子
+if [[ "$word" == *" "* ]]; then
+    CMD="/bin/trans en:zh -b"
+else
+    CMD="/home/silver/.local/bin/kd"
+fi
+
+escaped_word=$(printf '%q' "$word")
+$TERM -e fish -c "$CMD $escaped_word"

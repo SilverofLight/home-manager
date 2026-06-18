@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/silver/Documents/github/
+git clone $QUTE_URL.git

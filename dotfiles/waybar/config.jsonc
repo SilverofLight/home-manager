@@ -1,0 +1,217 @@
+{
+    "position": "top",
+    "layer": "top",
+    "height": 5,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": [
+        "custom/launcher",
+        "niri/workspaces",
+        "custom/windows",
+        "mpd",
+        "custom/lyrics"
+    ],
+    "modules-center": [
+        "cpu",
+        "memory",
+        "custom/gpu",
+        "disk"
+    ],
+    "modules-right": [
+        "custom/mouseless",
+        "custom/numbermode",
+        "custom/wf-recorder",
+        "tray",
+        "custom/update",
+        "custom/mail_new",
+        "network",
+        "bluetooth",
+        "pulseaudio",
+        "battery",
+        "clock"
+    ],
+    // Modules configuration
+    "clock": {
+        "format": "  {:%y/%m/%d %a %H:%M}",
+        "tooltip": "true",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": " {:%d/%m}"
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "on-scroll-up": "niri msg action focus-workspace-up",
+        "on-scroll-down": "niri msg action focus-workspace-down",
+        "format-icons": {
+            // Named workspaces
+            // (you need to configure them in niri)
+            "wechat": "",
+            "special": "󰎚",
+            // Icons by state
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "custom/windows": {
+        "exec": "~/.config/waybar/scripts/waybar-niri-windows",
+        "return-type": "json",
+        "restart-interval": 1,
+        "hide-empty-text": true,
+        "on-scroll-up": "niri msg action focus-column-left",
+        "on-scroll-down": "niri msg action focus-column-right",
+        "on-click": "niri msg action toggle-overview"
+    },
+    "mpd": {
+        "format": "<span foreground='#E5B9C6'>󰒮 {title} 󰒭</span>",
+        "format-disconnected": "<span foreground='#E5B9C6'>Media 󰃂</span>",
+        "format-stopped": "<span foreground='#E5B9C6'>Media 󰃂</span>",
+        "interval": 10,
+        "state-icons": {
+            "paused": "Paused 󰏥 ",
+            "playing": "Playing 󰐌 "
+        },
+        "tooltip-format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+        "tooltip-format-disconnected": "MPD Disconnected",
+        "on-click-middle": "mpc toggle",
+        "on-click": "mpc prev",
+        "on-click-right": "mpc next"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}% ",
+        "format-plugged": "{icon} {capacity}% 󱐥",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "memory": {
+        "format": "󰍛 {}%",
+        "format-alt": "󰍛 {used}/{total} GiB",
+        "interval": 5
+    },
+    "cpu": {
+        "format": "󰻠 {usage}%",
+        "format-alt": "󰻠 {avg_frequency} GHz",
+        "interval": 5
+    },
+    "custom/gpu": {
+        "exec": "/usr/bin/nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+        "format": "󰢮 {}%",
+        "format-alt": "󰢮 GPU: {}%",
+        "interval": 5
+    },
+    "disk": {
+        "format": "󰋊 {percentage_used}%",
+        "format-alt": "󰋊 {used}/{total} GiB",
+        "interval": 5,
+        "path": "/"
+    },
+    "network": {
+        "format-wifi": "󰤨  {essid}",
+        "format-ethernet": " {ifname}: Aesthetic",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "󰤭",
+        "format-alt": " {ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{essid}",
+        "on-click-right": "nm-connection-editor"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 5
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "on-click": "bash ~/.scripts/volume mute",
+        "on-scroll-up": "bash ~/.scripts/volume up",
+        "on-scroll-down": "bash ~/.scripts/volume down",
+        "scroll-step": 5,
+        "on-click-right": "pavucontrol"
+    },
+    "custom/launcher": {
+        "format": "󰣇",
+        "on-click": "wofi --show drun",
+        "on-click-right": "wofi --show run",
+        "on-click-middle": "wlogout"
+    },
+    "custom/wf-recorder": {
+        "format": "{}",
+        "interval": "once",
+        "exec": "echo ''",
+        "tooltip": "false",
+        "exec-if": "pgrep 'wf-recorder'",
+        "on-click": "bash $HOME/.config/rofi/scripts/wlrecord.sh",
+        "signal": 8
+    },
+    "custom/mouseless": {
+        "format": "{}",
+        "interval": "once",
+        "exec": "echo ' '",
+        "tooltip": "false",
+        "exec-if": "test -f $HOME/Templates/mouse.tmp",
+        "signal": 7
+    },
+    "custom/numbermode": {
+        "format": "{}",
+        "interval": "once",
+        "exec": "echo '󰬕 '",
+        "tooltip": "false",
+        "exec-if": "test -f $HOME/Templates/number.tmp",
+        "signal": 6
+    },
+    "custom/clash": {
+        "format": " ",
+        "interval": 5,
+        "exec": "$HOME/.config/waybar/scripts/get_proxy.py",
+        "exec-if": "pgrep 'verge-mihomo'",
+        "tooltip": true,
+        "tooltip-format": "connecting: {}"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "",
+        "format-connected": " 󰥉 {device_battery_percentage}%",
+        "format-connected-battery": " 󰥉 {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "blueman-manager"
+    },
+    "custom/update": {
+        "format": "󱉙  {} ",
+        "exec": "checkupdates | wc -l",
+        "interval": 3600
+    },
+    "custom/lyrics": {
+        "format": " {}",
+        "exec": "python $HOME/.config/waybar/scripts/lyrics.py",
+        "interval": 1
+    },
+    "custom/mail_new": {
+        "format": "  {} ",
+        "exec": "$HOME/.config/waybar/scripts/mail_new.sh",
+        "interval": 60
+    }
+}

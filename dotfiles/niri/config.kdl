@@ -1,0 +1,168 @@
+include "keymap.kdl"
+include "startups.kdl"
+include "windowrule.kdl"
+include "animation.kdl"
+include "env.kdl"
+// "/-" comments out the following node.
+// workspace "wechat"
+workspace "special" {
+    open-on-output "HDMI-A-1"
+}
+
+input {
+    keyboard {
+        xkb {
+            // 同时 layout 和 variannt 开启 colemak
+            // layout "us"
+            // variant "colemak"
+            options "compose:ralt,ctrl:nocaps"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+    }
+
+    trackpoint {
+    }
+
+    mod-key "Alt"
+    mod-key-nested "Super"
+}
+
+output "HDMI-A-1" {
+    mode "2560x1440@100"
+    scale 1
+
+    layout {
+        default-column-width { proportion 0.9; }
+    }
+
+    position x=0 y=0
+}
+
+output "DP-3" {
+    mode "3440x1440@144"
+    scale 1
+
+    layout {
+        default-column-width { proportion 0.9; }
+    }
+
+    position x=0 y=0
+}
+
+output "eDP-1" {
+    off
+
+    mode "1920x1080@60.020"
+    scale 1
+
+    layout {
+        default-column-width { proportion 1.0; }
+    }
+
+    transform "normal"
+    position x=1920 y=0
+}
+
+cursor {
+  hide-when-typing
+  hide-after-inactive-ms 5000
+}
+
+layout {
+    gaps 5
+
+    center-focused-column "never"
+
+    always-center-single-column
+    preset-column-widths {
+        proportion 0.45
+        proportion 0.55
+        proportion 0.9
+    }
+
+    default-column-width { proportion 0.8; }
+
+    // You can change how the focus ring looks.
+    focus-ring {
+        off
+        width 4
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    border {
+        width 3
+        active-color "#bd93fa"
+        inactive-color "#44475aaa"
+    }
+
+    shadow {
+    }
+
+    tab-indicator {
+      off
+    }
+
+    // Struts shrink the area occupied by windows, similarly to layer-shell panels.
+    struts {}
+}
+
+// 取消左上角进入 overview
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
+prefer-no-csd // 取消窗口标题栏
+
+overview {
+  workspace-shadow {
+    off
+  }
+}
+
+xwayland-satellite {
+   // off
+    path "xwayland-satellite"
+}
+
+// 开机不显示帮助
+hotkey-overlay {
+  skip-at-startup
+}
+
+recent-windows {
+    // off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 0
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}

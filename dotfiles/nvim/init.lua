@@ -1,0 +1,6 @@
+require("config.keymaps")
+require("config.lazy")
+require("config.options")
+require("config.pluginConfig")
+require("config.neovide")
+require("config.autocmd")

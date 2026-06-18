@@ -1,0 +1,15 @@
+#!/bin/env python
+
+import os
+from urllib.parse import urlparse
+import subprocess
+
+URL = os.getenv('QUTE_URL')
+
+parsed = urlparse(URL)
+domain = parsed.netloc
+
+subprocess.run(
+    f"bw-create --type login --name {domain} --uri {domain}",
+    shell=True
+)

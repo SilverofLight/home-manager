@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+本地 Bitwarden CSV 自动填充（fake-key 版）
+用法：bw-local {username|password|fill|auto}
+auto = 填完直接回车提交
+"""
+import os, sys, csv, re, shlex, subprocess, json
+from urllib.parse import urlparse
+
+CSV_PATH   = os.path.expanduser("~/Documents/keys/passwords.csv")
+QUTE_URL   = os.environ.get("QUTE_URL")
+QUTE_FIFO  = os.environ.get("QUTE_FIFO")
+
+# ---------- 小工具 ----------
+def qute(cmd):
+    if not QUTE_FIFO: return
+    with open(QUTE_FIFO, "w") as f:
+        f.write(cmd.strip() + "\n")
+
+def msg(level, txt):
+    qute(f"{level} \"{txt}\"")
+
+def domainer(url):
+    if not re.match(r"^https?://", url):
+        url = "https://" + url
+    return urlparse(url).netloc.split(":")[0].lower()
+
+def load_csv():
+    """返回 list[dict] 同你旧脚本"""
+    entries = []
+    try:
+        with open(CSV_PATH, newline='', encoding='utf-8') as f:
+            for row in csv.DictReader(f):
+                if row.get('type') != 'login':
+                    continue
+                uris = [u.strip() for u in row.get('login_uri', '').split(';') if u.strip()]
+                for u in uris:
+                    d = domainer(u)
+                    if d:
+                        entries.append({'domain': d,
+                                        'username': row.get('login_username', ''),
+                                        'password': row.get('login_password', ''),
+                                        'name': row.get('name', '')})
+    except Exception as e:
+        msg("message-error", f"CSV 读取失败: {e}")
+    return entries
+
+def best_match(entries, current):
+    """先精确再根域"""
+    for e in entries:
+        if e['domain'] == current: return e
+    cur_root = '.'.join(current.split('.')[-2:])
+    for e in entries:
+        ent_root = '.'.join(e['domain'].split('.')[-2:])
+        if ent_root == cur_root: return e
+    return None
+
+# ---------- fake-key 核心 ----------
+def fake_key(text):
+    """把任意字符串用 fake-key 打进去"""
+    for ch in text:
+        seq = '" "' if ch == ' ' else shlex.quote(r'{}'.format(ch))
+        qute(f"fake-key {seq}")
+
+def tab():
+    qute("fake-key <Tab>")
+
+def enter():
+    qute("fake-key <Return>")
+
+# ---------- 主逻辑 ----------
+def main():
+    if not QUTE_URL:
+        msg("message-error", "QUTE_URL 不存在"); sys.exit(1)
+    if len(sys.argv) != 2 or sys.argv[1] not in {"username", "password", "fill", "auto"}:
+        msg("message-error", "用法: bw-local {username|password|fill|auto}"); sys.exit(1)
+    cmd = sys.argv[1]
+
+    current = domainer(QUTE_URL)
+    entries = load_csv()
+    match   = best_match(entries, current)
+    if not match:
+        msg("message-warning", f"未找到 {current} 的条目"); sys.exit(1)
+
+    username = match['username'] or ''
+    password = match['password'] or ''
+
+    # --- 复制到剪贴板 ---
+    def copy(text):
+        try:
+            if os.environ.get("WAYLAND_DISPLAY"):
+                subprocess.run(["wl-copy", "-n"], input=text.encode(), check=True)
+            else:
+                subprocess.run(["xclip", "-selection", "clipboard"],
+                               input=text.encode(), check=True)
+            return True
+        except Exception:
+            return False
+
+    if cmd == "username":
+        if copy(username):
+            msg("message-info", "用户名已复制到剪贴板")
+        else:
+            msg("message-error", "复制用户名失败")
+    elif cmd == "password":
+        if copy(password):
+            msg("message-info", "密码已复制到剪贴板")
+        else:
+            msg("message-error", "复制密码失败")
+    elif cmd in ("fill", "auto"):
+        if not username or not password:
+            msg("message-warning", "用户名或密码为空"); sys.exit(1)
+        fake_key(username)
+        tab()
+        fake_key(password)
+        if cmd == "auto":
+            enter()
+        msg("message-info", "已自动填充" + ("并提交" if cmd == "auto" else ""))
+
+if __name__ == "__main__":
+    main()

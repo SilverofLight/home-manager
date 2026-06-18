@@ -1,0 +1,24 @@
+#!/bin/env python3
+
+import os
+import time
+
+qute_fifo = os.environ["QUTE_FIFO"]
+if not qute_fifo:
+    exit(1)
+
+def speed_control(speed: int):
+    with open(qute_fifo, 'w') as f:
+        f.write(f"spawn -u qute-speed {speed}\n")
+
+
+speed_control(10)
+time.sleep(1) # 等待 0.5 秒的话按钮不会立刻出现
+
+speed_control(1)
+with open(qute_fifo, 'w') as f:
+    f.write("hint -f ytskip\n")
+
+time.sleep(0.5)
+with open(qute_fifo, 'w') as f:
+    f.write("clear-messages\n")

@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+
+fifo = os.getenv('QUTE_FIFO')
+mode = sys.argv[1]
+
+if not fifo:
+    sys.exit()
+
+current_im = subprocess.run(['fcitx5-remote', '-n'], stdout=subprocess.PIPE).stdout.decode('utf-8').strip()
+
+if "keyboard-us" not in current_im:
+    subprocess.run(['fcitx5-remote', '-c', 'keyboard-us'])
+
+if mode == 'insert':
+    with open(fifo, 'w') as f:
+        f.write('jseval -q document.activeElement.blur()\n')
+        f.write('mode-leave\n')
+elif mode == 'normal':
+    with open(fifo, 'w') as f:
+        f.write('jseval -q document.activeElement.blur()\n')
+        f.write('clear-keychain\n')
+        f.write('search\n')
+        f.write('fullscreen --leave\n')

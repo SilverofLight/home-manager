@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+import os, sys, textwrap
+
+fifo = os.getenv('QUTE_FIFO')
+if not fifo:
+    sys.exit()
+
+speed = float(sys.argv[1]) if len(sys.argv) > 1 else 2.0
+
+js_multiline = textwrap.dedent(f'''\
+    (function(speed){{
+        const vids = document.querySelectorAll('video');
+        let ok = 0;
+        vids.forEach(v=>{{
+            try{{ v.playbackRate = speed; ok++; }}
+            catch(e){{}}
+        }});
+        if(ok) console.info('[speed-video] 已设置 '+ok+' 个 video → ×'+speed);
+        else   console.warn('[speed-video] 未找到 <video> 元素');
+        console.log("[speed-video] 速度设置为 "+speed);
+    }})({speed});
+''')
+
+js_oneline = ' '.join(js_multiline.split())
+
+with open(fifo, 'w') as f:
+    f.write(f'jseval -q {js_oneline}\n')
+
+with open(fifo, 'w') as f:
+    f.write(f'message-info "视频已设为 ×{speed}"')

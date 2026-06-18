@@ -1,0 +1,50 @@
+-- render markdown
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH1Bg', { bg = '#1D2128' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH2Bg', { bg = '#242931' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH3Bg', { bg = '#2B3139' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH4Bg', { bg = '#323842' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH5Bg', { bg = '#323842' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH6Bg', { bg = '#323842' })
+--
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH1', { fg = '#88C0D0' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH2', { fg = '#81A1C1' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH3', { fg = '#5E81AC' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH4', { fg = '#EBCB8B' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH5', { fg = '#A3BE8C' })
+-- vim.api.nvim_set_hl(0, 'RenderMarkdownH6', { fg = '#B48EAD' })
+--
+-- require('render-markdown').setup({
+--   heading = {
+--     enabled = true,
+--     sign = true,
+--     position = 'overlay',
+--     icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
+--     signs = { '󰫎 ' },
+--     width = 'full',
+--     left_margin = 0,
+--     left_pad = 0,
+--     right_pad = 0,
+--     min_width = 0,
+--     border = false,
+--     border_virtual = false,
+--     border_prefix = false,
+--     above = '▄',
+--     below = '▀',
+--     backgrounds = {
+--       'RenderMarkdownH1Bg',
+--       'RenderMarkdownH2Bg',
+--       'RenderMarkdownH3Bg',
+--       'RenderMarkdownH4Bg',
+--       'RenderMarkdownH5Bg',
+--       'RenderMarkdownH6Bg',
+--     },
+--     foregrounds = {
+--       'RenderMarkdownH1',
+--       'RenderMarkdownH2',
+--       'RenderMarkdownH3',
+--       'RenderMarkdownH4',
+--       'RenderMarkdownH5',
+--       'RenderMarkdownH6',
+--     },
+--   },
+-- })

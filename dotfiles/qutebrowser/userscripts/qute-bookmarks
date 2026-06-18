@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+current_url=$QUTE_URL
+fifo=$QUTE_FIFO
+
+if [ "$1" = "open" ]; then
+    if [ "$current_url" = 'https://start.duckduckgo.com/' ]; then
+        url=$($HOME/mydots/niri/.config/niri/scripts/bookmark.py open)
+        echo "open $url" > $fifo
+    else
+        $HOME/mydots/niri/.config/niri/scripts/bookmark.py
+    fi
+elif [ "$1" = "add" ]; then
+    url=$QUTE_URL
+    kitty -T Floating_Term --hold -e fish -c "~/.scripts/bookmarks.py $url"
+fi

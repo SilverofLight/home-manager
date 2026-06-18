@@ -1,0 +1,20 @@
+{
+  "theorem": {
+    "prefix": "theorem",
+    "body": "theorem ${1}\n\t(<++> :ℚ)\n\t(h1: <++>)\n\t(h2: <++>)\n\t(h3: <++>)\n\t: <++> := by <++>",
+    "description": "theorem"
+  },
+  "import": {
+    "prefix": "import",
+    "body": "import Mathlib.Tactic.Linarith",
+    "description": "import Mathlib"
+  },
+  "exact": {
+    "prefix": "exact",
+    "body": "exact ⟨ ${1},<++> ⟩"
+  },
+  "have": {
+    "prefix": "have",
+    "body": "have ${1:name}: ${2:body} := by<++>"
+  }
+}

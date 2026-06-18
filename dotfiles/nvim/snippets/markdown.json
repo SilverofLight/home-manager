@@ -1,0 +1,796 @@
+{
+    "Links": {
+        "prefix": ["l", "link"],
+        "body": ["[${1:text}](${2:url}) ${0}"],
+        "description": "Add links"
+    },
+    "URLS": {
+        "prefix": ["u", "url"],
+        "body": ["<${1}> ${0}"],
+        "description": "Add urls"
+    },
+    "Images": {
+        "prefix": "img",
+        "body": ["![${1:alt text}](${2:path}) ${0}"],
+        "description": "Add images"
+    },
+    "Insert strikethrough": {
+        "prefix": "strikethrough",
+        "body": "~~${1}~~ ${0}",
+        "description": "Insert strikethrough"
+    },
+    "Insert bold text": {
+        "prefix": ["bold", "b"],
+        "body": "**${1}** $0",
+        "description": "Insert bold text"
+    },
+    "Insert italic text": {
+        "prefix": ["i", "italic"],
+        "body": "*${1}* $0",
+        "description": "Insert italic text"
+    },
+    "Insert bold and italic text": {
+        "prefix": ["bold and italic", "bi"],
+        "body": "***${1}*** $0",
+        "description": "Insert bold and italic text"
+    },
+    "Insert quoted text": {
+        "prefix": "quote",
+        "body": "> ${1}",
+        "description": "Insert quoted text"
+    },
+    "Insert code": {
+        "prefix": "code",
+        "body": "`${1}` $0",
+        "description": "Insert code"
+    },
+    "Insert code block": {
+        "prefix": "codeblock",
+        "body": ["```${1:language}", "$0", "```"],
+        "description": "Insert fenced code block"
+    },
+    "Insert unordered list": {
+        "prefix": "unordered list",
+        "body": ["- ${1:first}", "- ${2:second}", "- ${3:third}", "$0"],
+        "description": "Insert unordered list"
+    },
+    "Insert ordered list": {
+        "prefix": "ordered list",
+        "body": ["1. ${1:first}", "2. ${2:second}", "3. ${3:third}", "$0"],
+        "description": "Insert ordered list"
+    },
+    "Insert horizontal rule": {
+        "prefix": "horizontal rule",
+        "body": "----------\n",
+        "description": "Insert horizontal rule"
+    },
+    "Insert task list": {
+        "prefix": "task",
+        "body": ["- [${1| ,x|}] ${2:text}", "${0}"],
+        "description": "Insert task list"
+    },
+    "Insert task list 2": {
+        "prefix": "task2",
+        "body": ["- [${1| ,x|}] ${2:text}", "- [${3| ,x|}] ${4:text}", "${0}"],
+        "description": "Insert task list with 2 tasks"
+    },
+    "Insert task list 3": {
+        "prefix": "task3",
+        "body": [
+            "- [${1| ,x|}] ${2:text}",
+            "- [${3| ,x|}] ${4:text}",
+            "- [${5| ,x|}] ${6:text}",
+            "${0}"
+        ],
+        "description": "Insert task list with 3 tasks"
+    },
+    "Insert task list 4": {
+        "prefix": "task4",
+        "body": [
+            "- [${1| ,x|}] ${2:text}",
+            "- [${3| ,x|}] ${4:text}",
+            "- [${5| ,x|}] ${6:text}",
+            "- [${7| ,x|}] ${8:text}",
+            "${0}"
+        ],
+        "description": "Insert task list with 4 tasks"
+    },
+    "Insert task list 5": {
+        "prefix": "task5",
+        "body": [
+            "- [${1| ,x|}] ${2:text}",
+            "- [${3| ,x|}] ${4:text}",
+            "- [${5| ,x|}] ${6:text}",
+            "- [${7| ,x|}] ${8:text}",
+            "- [${9| ,x|}] ${10:text}",
+            "${0}"
+        ],
+        "description": "Insert task list with 5 tasks"
+    },
+    "Insert subscript": {
+        "prefix": "sub",
+        "body": ["${1}<sub>${0}"],
+        "description": "Create a subscript."
+    },
+    "Insert superscript": {
+        "prefix": "sup",
+        "body": ["${1}<sup>${0}"],
+        "description": "Create a superscript."
+    },
+    "Insert Note": {
+        "prefix": ["note", "n"],
+        "body": "> [!NOTE]\n> ",
+        "description": "Insert Note"
+    },
+    "Insert Tip": {
+        "prefix": ["tip", "t"],
+        "body": "> [!TIP]\n> ",
+        "description": "Insert Tip"
+    },
+    "Insert Important": {
+        "prefix": ["important", "imp"],
+        "body": "> [!IMPORTANT]\n> ",
+        "description": "Insert Important"
+    },
+    "Insert Warning": {
+        "prefix": ["warning", "w"],
+        "body": "> [!WARNING]\n> ",
+        "description": "Insert Warning"
+    },
+    "Insert Caution": {
+        "prefix": ["caution", "c"],
+        "body": "> [!CAUTION]\n> ",
+        "description": "Insert Caution"
+    },
+    "Insert 5 table": {
+        "prefix": "5table",
+        "body": [
+            "| ${1} | <++> | <++> | <++> | <++> |",
+            "| ---- | ---- | ---- | ---- | ---- |",
+            "| <++> | <++> | <++> | <++> | <++> |"
+        ],
+        "description": "my 5 table"
+    },
+    "Insert 4 table": {
+        "prefix": "4table",
+        "body": [
+            "| ${1} | <++> | <++> | <++> |",
+            "| ---- | ---- | ---- | ---- |",
+            "| <++> | <++> | <++> | <++> |"
+        ],
+        "description": "my 4 table"
+    },
+    "Insert 3 table": {
+        "prefix": "3table",
+        "body": [
+            "| ${1} | <++> | <++> |",
+            "| ---- | ---- | ---- |",
+            "| <++> | <++> | <++> |"
+        ],
+        "description": "my 3 table"
+    },
+    "Insert 2 table": {
+        "prefix": "2table",
+        "body": [
+            "| ${1} | <++> |",
+            "| ---- | ---- |",
+            "| <++> | <++> |"
+        ],
+        "description": "my 2 table"
+    },
+    "Insert 1 table": {
+        "prefix": "1table",
+        "body": [
+            "| ${1} |",
+            "| ---- |",
+            "| <++> |"
+        ],
+        "description": "my 1 table"
+    },
+    "dfrac": {
+        "prefix": "\\dfrac",
+        "body": [
+            "\\dfrac{ ${1} }{ <++> }"
+        ],
+        "description": "dfrac"
+    },
+    "overline": {
+        "prefix": "\\overline",
+        "body": [
+            "\\overline{ ${1} }"
+        ],
+        "description": "上横线"
+    },
+    "overbrace": {
+        "prefix": "\\overbrace",
+        "body": [
+            "\\overbrace{ ${1} }"
+        ],
+        "description": "上大括号"
+    },
+    "overrightarrow": {
+        "prefix": "\\overrightarrow",
+        "body": [
+            "\\overrightarrow{ ${1} }"
+        ],
+        "description": "上箭头"
+    },
+    "overset": {
+        "prefix": "\\overset",
+        "body": [
+            "\\overset{ ${1} }{ <++> }"
+        ],
+        "description": "上放置"
+    },
+    "underset": {
+        "prefix": "\\underset",
+        "body": [
+            "\\underset{ ${1} }{ <++> }"
+        ],
+        "description": "下放置"
+    },
+    "int": {
+        "prefix": "\\int",
+        "body": [
+            "\\int_{ ${1} }^{ <++> }"
+        ],
+        "description": "积分"
+    },
+    "iint": {
+        "prefix": "\\iint",
+        "body": [
+            "\\iint_{ ${1} }^{ <++> }"
+        ],
+        "description": "二重积分"
+    },
+    "oint": {
+        "prefix": "\\oint",
+        "body": [
+            "\\underset_{ ${1} }^{ <++> }"
+        ],
+        "description": "全积分"
+    },
+    "log": {
+        "prefix": "\\log",
+        "body": [
+            "\\log_{ ${1} }{ <++> }"
+        ],
+        "description": "log"
+    },
+    "ln": {
+        "prefix": "\\ln",
+        "body": [
+            "\\ln{ ${1} }"
+        ],
+        "description": "ln"
+    },
+    "sum": {
+        "prefix": "\\sum",
+        "body": [
+            "\\sun_{ ${1} }^{ <++> }"
+        ],
+        "description": "sum"
+    },
+    "prod": {
+        "prefix": "\\prod",
+        "body": [
+            "\\prod_{ ${1} }^{ <++> }"
+        ],
+        "description": "prod 累积"
+    },
+    "lim": {
+        "prefix": "\\lim",
+        "body": [
+            "\\lim_{ ${1} \\to \\infty}"
+        ],
+        "description": "lim"
+    },
+    "sqrt": {
+        "prefix": "\\sqrt",
+        "body": [
+            "\\sqrt[]{ ${1} }"
+        ],
+        "description": "sqrt"
+    },
+    "coreWord": {
+      "prefix": "---",
+      "body": [
+          "----",
+          "> CoreWord: "
+      ],
+      "description": "line and coreWord"
+    },
+    "quad": {
+      "prefix": "\\quad",
+      "body": "\\quad",
+      "description": "\\quad空格"
+    },
+    "gets": {
+      "prefix": "\\gets",
+      "body": "\\gets",
+      "description": "\\gets左箭头"
+    },
+    "left": {
+      "prefix": "\\left",
+      "body": "\\gets",
+      "description": "\\gets左箭头"
+    },
+   "to": {
+        "prefix": "\\to",
+        "body": "\\to",
+        "description": "\\to右箭头 →"
+    },
+    "longleftarrow": {
+        "prefix": "\\longleftarrow",
+        "body": "\\longleftarrow",
+        "description": "\\longleftarrow长左箭头"
+    },
+    "longrightarrow": {
+        "prefix": "\\longrightarrow",
+        "body": "\\longrightarrow",
+        "description": "\\longrightarrow长右箭头"
+    },
+    "times": {
+        "prefix": "\\times",
+        "body": "\\times",
+        "description": "\\times乘"
+    },
+    "div": {
+        "prefix": "\\div",
+        "body": "\\div",
+        "description": "\\div除"
+    },
+    "pm": {
+        "prefix": "\\pm",
+        "body": "\\pm",
+        "description": "\\pm加减"
+    },
+    "cdot": {
+        "prefix": "\\cdot",
+        "body": "\\cdot",
+        "description": "\\cdot点"
+    },
+    "cdots": {
+        "prefix": "\\cdots",
+        "body": "\\cdots",
+        "description": "\\cdots省略号"
+    },
+    "because": {
+        "prefix": "\\because",
+        "body": "\\because",
+        "description": "\\because因为"
+    },
+    "therefore": {
+        "prefix": "\\therefore",
+        "body": "\\therefore",
+        "description": "\\therefore所以"
+    },
+    "forall": {
+        "prefix": "\\forall",
+        "body": "\\forall",
+        "description": "\\forall任意"
+    },
+    "exists": {
+        "prefix": "\\exists",
+        "body": "\\exists",
+        "description": "\\exists存在"
+    },
+    "le": {
+        "prefix": "\\le",
+        "body": "\\le",
+        "description": "\\le小于等于"
+    },
+    "ge": {
+        "prefix": "\\ge",
+        "body": "\\ge",
+        "description": "\\ge大于等于"
+    },
+    "ne": {
+        "prefix": "\\ne",
+        "body": "\\ne",
+        "description": "\\ne不等于"
+    },
+    "approx": {
+        "prefix": "\\approx",
+        "body": "\\approx",
+        "description": "\\approx约等于"
+    },
+    "matrix": {
+        "prefix": "\\matrix",
+        "body": [ 
+          "\\begin{bmatrix}",
+          " <++> & <++> \\\\",
+          " <++> & <++> \\\\",
+          "\\end{bmatrix}"
+        ],
+        "description": "\\matrix矩阵"
+    },
+    "vmatrix": {
+        "prefix": "\\vmatrix",
+        "body": [
+          "\\begin{vmatrix}",
+          " <++> & <++> \\\\", 
+          " <++> & <++> \\\\",
+          "\\end{vmatrix}"
+        ],
+        "description": "\\vmatrix行列式"
+    },
+    "align": {
+        "prefix": "\\align",
+        "body": [
+          "\\begin{align*}",
+          " <++> & = <++> \\\\",
+          " & = <++> \\\\",
+          "\\end{align*}"
+        ],
+        "description": "\\align方程序列"
+    },
+    "cases": {
+        "prefix": "\\cases",
+        "body": [
+          "f{(n)} = ",
+          "\\begin{cases}",
+          " <++>, & <++> \\",
+          " <++>, & <++> \\",
+          "\\end{cases}"
+        ],
+        "description": "\\cases条件表达式"
+    },
+    "Delta": {
+        "prefix": "\\Delta",
+        "body": "\\Delta",
+        "description": "\\Delta Δ"
+    },
+    "Theta": {
+        "prefix": "\\Theta",
+        "body": "\\Theta",
+        "description": "\\Theta Θ"
+    },
+    "Sigma": {
+        "prefix": "\\Sigma",
+        "body": "\\Sigma",
+        "description": "\\Sigma Σ"
+    },
+    "Phi": {
+        "prefix": "\\Phi",
+        "body": "\\Phi",
+        "description": "\\Phi Φ"
+    },
+    "Psi": {
+        "prefix": "\\Psi",
+        "body": "\\Psi",
+        "description": "\\Psi Ψ"
+    },
+    "Omega": {
+        "prefix": "\\Omega",
+        "body": "\\Omega",
+        "description": "\\Omega Ω"
+    },
+    "alpha": {
+        "prefix": "\\alpha",
+        "body": "\\alpha",
+        "description": "\\alpha α"
+    },
+    "beta": {
+        "prefix": "\\beta",
+        "body": "\\beta",
+        "description": "\\beta β"
+    },
+    "gamma": {
+        "prefix": "\\gamma",
+        "body": "\\gamma",
+        "description": "\\gamma γ"
+    },
+    "delta": {
+        "prefix": "\\delta",
+        "body": "\\delta",
+        "description": "\\delta δ"
+    },
+    "epsilon": {
+        "prefix": "\\epsilon",
+        "body": "\\epsilon",
+        "description": "\\epsilon ε"
+    },
+    "zeta": {
+        "prefix": "\\zeta",
+        "body": "\\zeta",
+        "description": "\\zeta ζ"
+    },
+    "eta": {
+        "prefix": "\\eta",
+        "body": "\\eta",
+        "description": "\\eta η"
+    },
+    "theta": {
+        "prefix": "\\theta",
+        "body": "\\theta",
+        "description": "\\theta θ"
+    },
+    "lambda": {
+        "prefix": "\\lambda",
+        "body": "\\lambda",
+        "description": "\\lambda λ"
+    },
+    "mu": {
+        "prefix": "\\mu",
+        "body": "\\mu",
+        "description": "\\mu μ"
+    },
+    "nu": {
+        "prefix": "\\nu",
+        "body": "\\nu",
+        "description": "\\nu ν"
+    },
+    "pi": {
+        "prefix": "\\pi",
+        "body": "\\pi",
+        "description": "\\pi π"
+    },
+    "rho": {
+        "prefix": "\\rho",
+        "body": "\\rho",
+        "description": "\\rho ρ"
+    },
+    "sigma": {
+        "prefix": "\\sigma",
+        "body": "\\sigma",
+        "description": "\\sigma σ"
+    },
+    "tau": {
+        "prefix": "\\tau",
+        "body": "\\tau",
+        "description": "\\tau τ"
+    },
+    "psi": {
+        "prefix": "\\psi",
+        "body": "\\psi",
+        "description": "\\psi ψ"
+    },
+    "omega": {
+        "prefix": "\\omega",
+        "body": "\\omega",
+        "description": "\\omega ω"
+    },
+    "phi": {
+        "prefix": "\\phi",
+        "body": "\\phi",
+        "description": "\\phi ϕ"
+    },
+    "mermaid": {
+        "prefix": "mermaid",
+        "body": "```mermaid\n${0}\n```",
+        "description": "mermaid"
+    },
+    "flow": {
+        "prefix": "flow",
+        "body": [
+            "%% LR for horizontal",
+            "flowchart TD",
+            "A[${Title}] --> |Get money| B(Go shopping)",
+            "\tB --> C{Let me think}",
+            "\tC -->|One| D[Laptop]",
+            "\tC --> |Three| F[fa:fa-car Car]"
+        ],
+        "description": "Mermaid Flowchart"
+    },
+    "sequence": {
+        "prefix": "sequence",
+        "body": [
+            "sequenceDiagram",
+            "\tAlice->>+John: Hello John, how are you?",
+            "\tAlice->>+John: John, can you hear me?",
+            "\tJohn-->>-Alice: Hi Alice, I can hear you!",
+            "\tJohn-->>-Alice: I feel great!"
+        ],
+        "description": "Mermaid Sequence"
+    },
+    "class": {
+        "prefix": "class",
+        "body": [
+            "classDiagram",
+            "\tAnimal <|-- Duck",
+            "\tAnimal <|-- Fish",
+            "\tAnimal : +int age",
+            "\tAnimal : +String gender",
+            "\tAnimal: +isMammal()",
+            "\tAnimal: +mate()",
+            "\tclass Duck{",
+            "\t\t+String beakColor",
+            "\t\t+swim()",
+            "\t}",
+            "\tclass Fish{",
+            "\t\t-int sizeInFeet",
+            "\t\tcanEat()",
+            "\t}"
+        ],
+        "description": "Mermaid Class"
+    },
+    "state": {
+        "prefix": "state",
+        "body": [
+            "stateDiagram-v2",
+            "\t[*] --> Still",
+            "\tStill --> [*]",
+            "\tStill --> Moving",
+            "\tMoving --> Still",
+            "\tMoving --> Crash",
+            "\tCrash --> [*]"
+        ],
+        "description": "Mermaid State"
+    },
+    "erDiagram": {
+        "prefix": "er",
+        "body": [
+            "erDiagram",
+            "\tCUSTOMER }|..|{ DELIVERY-ADDRESS : has",
+            "\tCUSTOMER ||--o{ ORDER : places",
+            "\tCUSTOMER ||--o{ INVOICE : \"liable for\"",
+            "\tDELIVERY-ADDRESS ||--o{ ORDER : receives",
+            "\tINVOICE ||--|{ ORDER : covers",
+            "\tORDER ||--|{ ORDER-ITEM : includes",
+            "\tPRODUCT-CATEGORY ||--|{ PRODUCT : contains",
+            "\tPRODUCT ||--o{ ORDER-ITEM : \"ordered in\""
+        ],
+        "description": "Mermaid ER Diagram"
+    },
+    "GanttChart": {
+        "prefix": "gantt",
+        "body": [
+            "gantt",
+            "\ttitle A Gantt Diagram",
+            "\tdateFormat  YYYY-MM-DD",
+            "\tsection Section",
+            "\t\tA task           :a1, 2014-01-01, 30d",
+            "\t\tAnother task     :after a1, 20d",
+            "\tsection Another",
+            "\t\tTask in sec      :2014-01-12, 12d",
+            "\t\tanother task     :24d"
+        ],
+        "description": "Mermaid Gantt Chart"
+    },
+    "journey": {
+        "prefix": "journey",
+        "body": [
+            "journey",
+            "\ttitle My working day",
+            "\tsection Go to work",
+            "\t\tMake esa: 5: Me",
+            "\t\tGo upstairs: 3: Me",
+            "\t\tDo work: 1: Me, Cat",
+            "\tsection Go home",
+            "\t\tGo downstairs: 5: Me",
+            "\t\t Sit down: 3: Me"
+        ],
+        "description": "Mermaid Journey"
+    },
+    "gitGraph": {
+        "prefix": "git",
+        "body": [
+            "gitGraph",
+            "\tcommit",
+            "\tcommit",
+            "\tbranch develop",
+            "\tcheckout develop",
+            "\tcommit",
+            "\tcommit",
+            "\tcheckout main",
+            "\tmerge develop",
+            "\tcommit"
+        ],
+        "description": "Mermaid gitGraph"
+    },
+    "pie": {
+        "prefix": "pie",
+        "body": [
+            "pie title Pets adopted by volunteers",
+            "\t\"Dogs\" : 386",
+            "\t\"Cats\" : 85",
+            "\t\"Rats\" : 15"
+        ],
+        "description": "Mermaid Pie"
+    },
+    "mindmap": {
+        "prefix": "mindmap",
+        "body": [
+            "mindmap",
+              "\troot((mindmap))",
+                "\t\tOrigins",
+                  "\t\t\tLong history",
+                  "\t\t\t::icon(fa fa-book)",
+                  "\t\t\tPopularisation",
+                    "\t\t\t\tBritish popular psychology author Tony Buzan",
+                "\t\tResearch",
+                  "\t\t\tOn effectiveness<br/>and features",
+                  "\t\t\tOn Automatic creation",
+                    "\t\t\t\tUses",
+                        "\t\t\t\t\tCreative techniques",
+                        "\t\t\t\t\tStrategic planning",
+                        "\t\t\t\t\tArgument mapping",
+                "\t\tTools",
+                  "\t\t\tPen and paper",
+                  "\t\t\tMermaid"
+        ],
+        "description": "Mermaid mindmap"
+    },
+    "quadrant": {
+        "prefix": "quadrant",
+        "body": [
+            "quadrantChart",
+                "\ttitle Reach and engagement of campaigns",
+                "\tx-axis Low Reach --> High Reach",
+                "\ty-axis Low Engagement --> High Engagement",
+                "\tquadrant-1 We should expand",
+                "\tquadrant-2 Need to promote",
+                "\tquadrant-3 Re-evaluate",
+                "\tquadrant-4 May be improved",
+                "\tCampaign A: [0.3, 0.6]",
+                "\tCampaign B: [0.45, 0.23]",
+                "\tCampaign C: [0.57, 0.69]",
+                "\tCampaign D: [0.78, 0.34]",
+                "\tCampaign E: [0.40, 0.34]",
+                "\tCampaign F: [0.35, 0.78]"
+        ],
+        "description": "Mermaid quadrant"
+    },
+    "xyChart": {
+        "prefix": "xychart",
+        "body": [
+            "xychart-beta title \"Sales Revenue\"",
+            "\tx-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]",
+            "\ty-axis \"Revenue (in \\$)\" 4000 --> 11000",
+            "\tbar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]",
+            "\tline [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]"
+        ],
+        "description": "Mermaid xyChart"
+    },
+    "block": {
+        "prefix": "block",
+        "body": [
+            "block-beta",
+                "\t\tcolumns 3",
+                "\t\tdoc>\"Document\"]:3",
+                "\t\tspace down1<[\" \"]>(down) space",
+              "\tblock:e:3",
+                      "\t\tl[\"left\"]",
+                      "\t\tm(\"A wide one in the middle\")",
+                      "\t\tr[\"right\"]",
+              "\tend",
+                "\t\tspace down2<[\" \"]>(down) space",
+                "\t\tdb[(\"DB\")]:3",
+                "\t\tspace:3",
+                "\t\tD space C",
+                "\t\tdb --> D",
+                "\t\tC --> db",
+                "\t\tD --> C",
+                "\t\tstyle m fill:#d6d,stroke:#333,stroke-width:4px"
+        ],
+        "description": "Mermaid block"
+    },
+    "packet": {
+        "prefix": "packet",
+        "body": [
+            "---",
+            "title: \"TCP Packet\"",
+            "---",
+            "packet-beta",
+              "0-15: \"Source Port\"",
+              "16-31: \"Destination Port\"",
+              "32-63: \"Sequence Number\"",
+              "64-95: \"Acknowledgment Number\"",
+              "96-99: \"Data Offset\"",
+              "100-105: \"Reserved\"",
+              "106: \"URG\"",
+              "107: \"ACK\"",
+              "108: \"PSH\"",
+              "109: \"RST\"",
+              "110: \"SYN\"",
+              "111: \"FIN\"",
+              "112-127: \"Window\"",
+              "128-143: \"Checksum\"",
+              "144-159: \"Urgent Pointer\"",
+              "160-191: \"(Options and Padding)\"",
+              "192-255: \"Data (variable length)\""
+        ],
+        "description": "Mermaid packet"
+    }
+}
