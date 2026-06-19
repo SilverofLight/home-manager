@@ -22,6 +22,7 @@
     ./modules/desktop/hyprland.nix
     ./modules/desktop/niri.nix
     ./modules/desktop/waybar.nix
+    ./modules/desktop/kitty.nix
   ];
 
   programs.home-manager.enable = true;
