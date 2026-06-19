@@ -3,6 +3,7 @@
 {
   home.username = "silver";
   home.homeDirectory = "/home/silver";
+  targets.genericLinux.gpu.enable = true;
 
   home.stateVersion = "25.05";
 

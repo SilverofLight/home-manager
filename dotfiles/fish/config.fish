@@ -22,6 +22,10 @@ if status is-interactive
     # 解决 conda 报错
     # set -gx OPENSSL_MODULES /opt/anaconda/lib/ossl-modules
 
+    if not contains "$HOME/.nix-profile/share" $XDG_DATA_DIRS
+        set -gx XDG_DATA_DIRS $HOME/.nix-profile/share $XDG_DATA_DIRS
+    end
+
     function ra
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         yazi $argv --cwd-file="$tmp"
