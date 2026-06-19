@@ -1,9 +1,4 @@
-{ pkgs, ... }:
-
 {
-  home.packages = with pkgs; [
-    qutebrowser
-  ];
     # 系统安装 qutebrowser
   home.file.".config/qutebrowser/catppuccin".source =
     ../../dotfiles/qutebrowser/catppuccin;
