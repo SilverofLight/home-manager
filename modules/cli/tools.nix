@@ -20,5 +20,6 @@
     zip
 
     btop
+    rclone
   ];
 }

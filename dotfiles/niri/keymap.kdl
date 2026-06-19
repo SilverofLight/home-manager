@@ -118,6 +118,7 @@ binds {
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
+    Super+Comma { spawn-sh "dunstctl history-pop"; }
     Mod+Shift+Comma { spawn-sh "dunstctl close-all"; }
 
     Mod+Minus { switch-preset-column-width; }
