@@ -1,0 +1,9 @@
+allow_images=true
+image_size=20
+single_click=true
+height=45%
+insensitive=true
+exec_search=true
+
+key_pgup=Left
+key_pgdn=Right

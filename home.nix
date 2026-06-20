@@ -24,6 +24,7 @@
     ./modules/desktop/waybar.nix
     ./modules/desktop/kitty.nix
     ./modules/desktop/swaylock.nix
+    ./modules/desktop/wofi.nix
   ];
 
   programs.home-manager.enable = true;
