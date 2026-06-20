@@ -47,43 +47,43 @@ button span {
 
 
 #lock {
-    background-image: image(url("./icon/lock.svg"));
+    background-image: image(url("./icon/lock.png"));
 }
 #lock:hover {
-    background-image: image(url("./icon/lock.svg"));
+    background-image: image(url("./icon/lock.png"));
 }
 
 #logout {
-    background-image: image(url("./icon/logout.svg"));
+    background-image: image(url("./icon/logout.png"));
 }
 #logout:hover {
-    background-image: image(url("./icon/logout.svg"));
+    background-image: image(url("./icon/logout.png"));
 }
 
 #suspend {
-    background-image: image(url("./icon/suspend.svg"));
+    background-image: image(url("./icon/suspend.png"));
 }
 #suspend:hover {
-    background-image: image(url("./icon/suspend.svg"));
+    background-image: image(url("./icon/suspend.png"));
 }
 
 #shutdown {
-    background-image: image(url("./icon/shutdown.svg"));
+    background-image: image(url("./icon/shutdown.png"));
 }
 #shutdown:hover {
-    background-image: image(url("./icon/shutdown.svg"));
+    background-image: image(url("./icon/shutdown.png"));
 }
 
 #reboot {
-    background-image: image(url("./icon/reboot.svg"));
+    background-image: image(url("./icon/reboot.png"));
 }
 #reboot:hover {
-    background-image: image(url("./icon/reboot.svg"));
+    background-image: image(url("./icon/reboot.png"));
 }
 
 #hibernate {
-    background-image: image(url("./icon/hibernate.svg"));
+    background-image: image(url("./icon/hibernate.png"));
 }
 #hibernate:hover {
-    background-image: image(url("./icon/hibernate.svg"));
+    background-image: image(url("./icon/hibernate.png"));
 }
