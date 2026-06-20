@@ -26,6 +26,7 @@
     ./modules/desktop/swaylock.nix
     ./modules/desktop/wofi.nix
     ./modules/desktop/wlogout.nix
+    ./modules/desktop/wallpaper.nix
   ];
 
   programs.home-manager.enable = true;
