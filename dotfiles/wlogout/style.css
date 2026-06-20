@@ -1,0 +1,89 @@
+/* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
+/* wallust-wlogout */
+
+/* Importing wallust colors */
+/* @import '../../.config/hyprpanel/wallust/colors-waybar.css'; */
+@import '/home/silver/.config/hyprpanel/wallust/colors-waybar.css';
+
+window {
+    font-size: 24pt;
+    color: @foreground; /* text */
+    background-color: rgba(30, 30, 46, 0.8);
+}
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    background-color: rgba(200, 220, 255, 0);
+    animation: gradient_f 10s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    border-radius: 80px;
+	border:0px;
+	outline-style: none;
+}
+
+button:focus {
+    background-size: 50%;
+	border: 0px;
+	outline-style: none;
+
+}
+
+button:hover {
+    background-color: transparent; 
+    color: @color13;
+    background-size: 50%;
+    margin: 30px;
+    border-radius: 80px;
+    outline-style: none;
+	
+}
+
+/* Adjust the size of the icon or content inside the button */
+button span {
+    font-size: 1.2em; /* Increase the font size */
+}
+
+
+#lock {
+    background-image: image(url("./icon/lock.svg"));
+}
+#lock:hover {
+    background-image: image(url("./icon/lock.svg"));
+}
+
+#logout {
+    background-image: image(url("./icon/logout.svg"));
+}
+#logout:hover {
+    background-image: image(url("./icon/logout.svg"));
+}
+
+#suspend {
+    background-image: image(url("./icon/suspend.svg"));
+}
+#suspend:hover {
+    background-image: image(url("./icon/suspend.svg"));
+}
+
+#shutdown {
+    background-image: image(url("./icon/shutdown.svg"));
+}
+#shutdown:hover {
+    background-image: image(url("./icon/shutdown.svg"));
+}
+
+#reboot {
+    background-image: image(url("./icon/reboot.svg"));
+}
+#reboot:hover {
+    background-image: image(url("./icon/reboot.svg"));
+}
+
+#hibernate {
+    background-image: image(url("./icon/hibernate.svg"));
+}
+#hibernate:hover {
+    background-image: image(url("./icon/hibernate.svg"));
+}
