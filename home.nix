@@ -14,6 +14,7 @@
     ./modules/cli/dunst.nix
     ./modules/cli/fastfetch.nix
     ./modules/cli/tmux.nix
+    ./modules/cli/mpd.nix
 
     ./modules/dev/neovim.nix
 
