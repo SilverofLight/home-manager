@@ -23,6 +23,7 @@
     ./modules/desktop/niri.nix
     ./modules/desktop/waybar.nix
     ./modules/desktop/kitty.nix
+    ./modules/desktop/swaylock.nix
   ];
 
   programs.home-manager.enable = true;
