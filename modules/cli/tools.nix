@@ -23,5 +23,6 @@
     rclone
     micromamba
     nodejs
+    stow
   ];
 }
