@@ -17,7 +17,7 @@
   ];
 
   home.activation.linkYaziDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    ln -sfT ${../../dotfiles/yazi} ~/.config/yazi
+    ln -sfT $HOME/.config/home-manager/dotfiles/yazi $HOME/.config/yazi
     echo "[OK] link yazi dotfiles successfully"
   '';
 }
