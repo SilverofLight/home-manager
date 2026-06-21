@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.packages = with pkgs; [
@@ -9,8 +9,11 @@
   # home.file.".mpd/mpd.conf".source =
   #   ../../dotfiles/mpd/mpd.conf;
 
-  home.file.".config/mpd".source =
-    ../../dotfiles/mpd;
+  xdg.configFile."mpd".source = ../../dotfiles/mpd;
+  # home.activation.linkMpdDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  #   ln -sfT $HOME/.config/home-manager/dotfiles/mpd/ $HOME/.config/mpd
+  #   echo "[OK] link mpd dotfiles successfully"
+  # '';
 
   systemd.user.services.mpd = {
     Unit = {
@@ -25,7 +28,7 @@
     Service = {
       Type = "notify";
 
-      ExecStart = "${pkgs.mpd}/bin/mpd --no-daemon";
+      ExecStart = "${pkgs.mpd}/bin/mpd --no-daemon %h/.config/mpd/mpd.conf";
 
       # 现代 systemd user 环境一般不需要 systemd mode
       Restart = "on-failure";
@@ -36,9 +39,9 @@
       LimitMEMLOCK = "64M";
 
       # sandbox（用户级可用但要适当收敛）
-      NoNewPrivileges = true;
-      ProtectSystem = "strict";
-      ProtectHome = true;
+      # NoNewPrivileges = true;
+      # ProtectSystem = "strict";
+      # ProtectHome = true;
 
       RestrictAddressFamilies = [
         "AF_INET"
