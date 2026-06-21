@@ -1,0 +1,142 @@
+# swayimg/config
+# @layout colemak
+# @author Silver
+# @since 2024,2025
+
+[general]
+mode = viewer
+# position = parent
+# size = parent
+sigusr1 = reload
+sigusr2 = next_file
+app_id = swayimg
+
+[viewer]
+# window = #282a36ee
+window = #1e1e2eee
+transparency = #282a36
+scale = optimal
+# antialiasing = yes
+history = 1
+preload = 1
+
+[gallery]
+size = 200
+cache = 100
+border_color = #bd93faff
+# antialiasing = yes
+# window = #282a36ee
+window = #1e1e2eee
+# background = #282a36ee
+background = #1e1e2eee
+# select = #6f3f89
+select = #cba6f7ff
+
+[list]
+order = alpha
+recursive = no
+all = yes
+
+[font]
+# name = SourceCodePro
+name = Sarasa Term SC
+size = 14
+color = #FFFFFF
+shadow = #000000
+
+[info]
+show = no
+info_timeout = 0
+status_timeout = 0
+
+[info.viewer]
+top_left = +name,+format,+filesize,+imagesize,+exif
+top_right = index
+bottom_left = scale,frame
+bottom_right = status
+
+[info.gallery]
+top_left = none
+top_right = none
+bottom_left = none
+bottom_right = name,status
+
+[keys.viewer]
+Shift + question = help
+g = first_file
+Shift+g = last_file
+p = prev_file
+semicolon = prev_file
+k = next_file
+Shift+k = next_dir
+comma = prev_file
+period = next_file
+c = skip_file
+a = animation
+o = mode gallery
+i = step_left 20
+h = step_right 20
+n = step_up 20
+e = step_down 20
+Shift + H = step_left 1
+Shift + I = step_right 1
+Shift + E = step_up 1
+Shift + N = step_down 1
+Equal = zoom +10
+Shift + Plus = zoom +10
+Plus = zoom +10
+u = zoom +10
+Minus = zoom -10
+w = zoom width
+#Shift+u = exec convert "%" -channel RGB -negate - | swayimg -
+#Shift+d = exec ~/.local/bin/swayimg-rm "%" && skip_file; reload
+Shift+w = exec awww img "%" -t random;
+Shift+y = exec cp "%" ~/Public/;
+z = zoom fit
+f = zoom fill
+0 = zoom real
+BackSpace = zoom optimal
+r = rotate_left
+R = rand_file
+Ctrl +r = rotate_right
+v = flip_vertical
+x = flip_horizontal
+Shift + a = antialiasing
+Shift + r = reload
+m = info
+Escape = exit
+q = exit
+ScrollLeft = step_right 5
+ScrollRight = step_left 5
+ScrollUp = step_up 5
+ScrollDown = step_down 5
+Ctrl+ScrollUp = zoom +10
+Ctrl+ScrollDown = zoom -10
+Shift+ScrollUp = prev_file
+Shift+ScrollDown = next_file
+Alt+ScrollUp = prev_frame
+Alt+ScrollDown = next_frame
+
+[keys.gallery]
+Shift + question = help
+g = first_file
+Shift+g = last_file
+h = step_left
+i = step_right
+e = step_up
+n = step_down
+p = page_up
+semicolon = page_up
+k = page_down
+c = skip_file
+Return = mode
+o = mode viewer
+Shift + a = antialiasing
+r = reload
+m = info
+# Shift+u = exec convert "%" -channel RGB -negate - | swayimg -
+# Shift+d = exec ~/.local/bin/swayimg-rm "%" && skip_file; reload
+Shift+w = exec awww img "%" -t random;
+Shift+y = exec cp "%" ~/Public/;
+Escape = exit
+q = exit
