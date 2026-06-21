@@ -22,5 +22,6 @@
     btop
     rclone
     micromamba
+    nodejs
   ];
 }
