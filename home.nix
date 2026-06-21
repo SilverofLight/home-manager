@@ -56,7 +56,9 @@
         fi
       }
   
+      echo "=========================================="
       echo "===== Home Manager Environment Check ====="
+      echo "=========================================="
   
       check_cmd niri
       check_cmd qutebrowser
@@ -64,6 +66,7 @@
       check_service mouseless.service
       check_service singbox.service
   
+      echo "=========================================="
       echo "=========================================="
     '';
 
