@@ -17,6 +17,7 @@
     ./modules/cli/mpd.nix
     ./modules/cli/rmpc.nix
     ./modules/cli/yazi.nix
+    ./modules/cli/kd.nix
 
     ./modules/dev/neovim.nix
 
