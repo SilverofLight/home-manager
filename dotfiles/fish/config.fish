@@ -124,15 +124,10 @@ fish_add_path /home/silver/.opencode/bin
 # nix
 fish_add_path /home/silver/.nix-profile/bin
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /opt/anaconda/bin/conda
-    eval /opt/anaconda/bin/conda "shell.fish" hook $argv | source
-else
-    if test -f "/opt/anaconda/etc/fish/conf.d/conda.fish"
-        . "/opt/anaconda/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH /opt/anaconda/bin $PATH
-    end
-end
-# <<< conda initialize <<<
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by '.mamba-wrapped shell init' !!
+# set -gx MAMBA_EXE "/nix/store/v1nckrw66v5098m3nbs9r0y16djbfxaz-mamba-cpp-2.6.2/bin/.mamba-wrapped"
+set -gx MAMBA_ROOT_PREFIX "/home/silver/.conda"
+# $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+source (micromamba shell hook --shell fish | psub)
+# <<< mamba initialize <<<

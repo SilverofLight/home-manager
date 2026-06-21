@@ -21,5 +21,6 @@
 
     btop
     rclone
+    micromamba
   ];
 }
