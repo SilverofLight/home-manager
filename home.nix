@@ -16,6 +16,7 @@
     ./modules/cli/tmux.nix
     ./modules/cli/mpd.nix
     ./modules/cli/rmpc.nix
+    ./modules/cli/yazi.nix
 
     ./modules/dev/neovim.nix
 
