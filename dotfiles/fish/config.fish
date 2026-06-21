@@ -45,8 +45,6 @@ if status is-interactive
     alias wificnn="nmcli device wifi connect"
     alias hmm="h-m-m"
     alias gi="lazygit"
-    alias cn="cowsay 牛逼"
-    alias vv="nvim ~/Study/TODOlist.md"
     alias t="tmux"
     alias ta="tmux attach"
     alias tn="tmux new -s"
@@ -54,13 +52,8 @@ if status is-interactive
     alias en="~/.scripts/touchEtyma.sh"
     alias link="scrcpy"
     # alias s="fastfetch"
-    alias dic="~/Documents/github/my_dict/dict"
-    alias clash="$HOME/Documents/github/clash-for-linux/start.sh"
-    alias cnnp="nmcli device wifi connect DIRECT-5C-HP\ DeskJet\ 2700\ series"
-    alias cnnw="nmcli device wifi connect WHUT-DORM"
-    alias cdd="cd /run/media/silver/"
     alias hibernate="systemctl hibernate"
-    alias a="task"
+    alias conda="micromamba"
 
     function s
         if set -q SSH_CONNECTION
