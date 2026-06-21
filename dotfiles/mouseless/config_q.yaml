@@ -1,0 +1,80 @@
+# the default speed for mouse movement and scrolling
+baseMouseSpeed: 750.0
+baseScrollSpeed: 20.0
+
+comboTime: 50
+
+# the rest of the config defines the layers with their bindings
+layers:
+  # the first layer is active at start
+  - name: initial
+    bindings:
+      # when tab is held and another key pressed, activate mouse layer
+      tab: tap-hold-next tab ; toggle-layer direction ; 500
+      # when a is held for 300ms, activate mouse layer
+      # a: tap-hold a ; toggle-layer mouse ; 500
+      # when leftalt+a, activate mouse layer
+      leftalt+a: layer mouse
+      # a: tap-hold-next a ; toggle-layer mouse ; 500
+      # f+d: layer number
+      f: tap-hold-next f ; toggle-layer number ; 500
+      capslock: tap-hold esc ; leftctrl ; 100
+  # a layer for mouse movement
+  - name: mouse
+  # enterCommand: "notify-send 'mouseless' 'mouse layer entered'"
+  # exitCommand: "notify-send 'mouseless' 'mouse layer exited'"
+    enterCommand: "touch /home/silver/Templates/mouse.tmp; pkill -RTMIN+7 waybar"
+    exitCommand: "rm /home/silver/Templates/mouse.tmp; pkill -RTMIN+7 waybar"
+    # when true, keys that are not mapped keep their original meaning
+    bindings:
+      # quit mouse layer
+      q: layer initial
+      i: layer initial
+      # space: layer mouse
+      l: move  1  0
+      h: move -1  0
+      j: move  0  1
+      k: move  0 -1
+      p: scroll up
+      n: scroll down
+      c: speed 2.5
+      e: speed 0.3
+      capslock: speed 0.1
+      f: button left
+      #d: button middle
+      d: speed 0.3
+      s: button right
+      leftalt: leftalt
+      f+d: layer number
+      _: layer initial
+
+  - name: number
+    enterCommand: "touch /home/silver/Templates/number.tmp; pkill -RTMIN+6 waybar"
+    exitCommand: "rm /home/silver/Templates/number.tmp; pkill -RTMIN+6 waybar"
+    # passThrough: true
+
+    bindings:
+      k7: k7
+      k8: k8
+      k9: k9
+      u: k7
+      i: k8
+      o: k9
+      j: k4
+      k: k5
+      l: k6
+      m: k1
+      comma: k2
+      dot: k3
+      enter: k0
+      kpcomma: kpcomma
+      backspace: backspace
+      leftalt+a: layer mouse
+
+  - name: direction
+    bindings:
+      h: left
+      j: down
+      k: up
+      l: right
+      _: layer initial

@@ -1,0 +1,9 @@
+[Unit]
+Description=mouseless
+
+[Service]
+ExecStartPre=/bin/sleep 2
+ExecStart=/home/silver/.nix-profile/bin/mouseless --config /home/silver/.config/mouseless/config.yaml
+
+[Install]
+WantedBy=multi-user.target

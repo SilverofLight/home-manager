@@ -1,0 +1,92 @@
+# the default speed for mouse movement and scrolling
+baseMouseSpeed: 750.0
+baseScrollSpeed: 20.0
+
+comboTime: 50
+
+# the rest of the config defines the layers with their bindings
+layers:
+  # the first layer is active at start
+  - name: initial
+    bindings:
+      # when tab is held and another key pressed, activate mouse layer
+      tab: tap-hold-next tab ; toggle-layer direction ; 500
+      # when a is held for 300ms, activate mouse layer
+      # a: tap-hold a ; toggle-layer mouse ; 500
+      # when leftalt+a, activate mouse layer
+      leftalt+a: layer mouse
+      rightctrl+n: layer mouse
+      # a: tap-hold-next a ; toggle-layer mouse ; 500
+      # f+d: layer number
+      t: tap-hold-next t ; toggle-layer number ; 500
+      capslock: tap-hold esc ; leftctrl ; 100
+  # a layer for mouse movement
+  - name: mouse
+  # enterCommand: "notify-send 'mouseless' 'mouse layer entered'"
+  # exitCommand: "notify-send 'mouseless' 'mouse layer exited'"
+    enterCommand: "touch /home/silver/Templates/mouse.tmp; pkill -RTMIN+7 waybar"
+    exitCommand: "rm /home/silver/Templates/mouse.tmp; pkill -RTMIN+7 waybar"
+    enterCommand: "echo  > /home/silver/Templates/mouse.tmp"
+    exitCommand: "echo '' > /home/silver/Templates/mouse.tmp"
+    # when true, keys that are not mapped keep their original meaning
+    bindings:
+      # quit mouse layer
+      q: layer initial
+      u: layer initial
+      # space: layer mouse
+      i: move  1  0
+      h: move -1  0
+      n: move  0  1
+      e: move  0 -1
+      semicolon: scroll up
+      k: scroll down
+      comma: scroll up
+      m: scroll down
+      c: speed 2.5
+      s: speed 0.3
+      rightalt: speed 0.3
+      # leftctrl: speed 0.1
+      a: speed 0.1
+      t: button left
+      o: button left
+      #d: button middle
+      d: speed 0.3
+      r: button right
+      leftalt: leftalt
+      leftctrl: leftctrl
+      leftshift: leftshift
+      f+d: layer number
+      leftshift+k0: button middle
+      _: layer initial
+
+  - name: number
+    enterCommand: "touch /home/silver/Templates/number.tmp; pkill -RTMIN+6 waybar"
+    exitCommand: "rm /home/silver/Templates/number.tmp; pkill -RTMIN+6 waybar"
+    passThrough: false
+
+    bindings:
+      k7: k7
+      k8: k8
+      k9: k9
+      l: k7
+      u: k8
+      y: k9
+      n: k4
+      e: k5
+      i: k6
+      m: k1
+      comma: k2
+      dot: k3
+      enter: k0
+      kpcomma: kpcomma
+      backspace: backspace
+      leftalt+a: layer mouse
+      _: t+_
+
+  - name: direction
+    bindings:
+      h: left
+      n: down
+      e: up
+      i: right
+      _: layer initial
