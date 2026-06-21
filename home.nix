@@ -18,6 +18,7 @@
     ./modules/cli/rmpc.nix
     ./modules/cli/yazi.nix
     ./modules/cli/kd.nix
+    ./modules/cli/fonts.nix
 
     ./modules/dev/neovim.nix
 
