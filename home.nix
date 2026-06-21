@@ -28,6 +28,7 @@
     ./modules/desktop/wofi.nix
     ./modules/desktop/wlogout.nix
     ./modules/desktop/wallpaper.nix
+    {pkgs.callPackage ./modules/desktop/mouseless.nix {}}
   ];
 
   programs.home-manager.enable = true;
