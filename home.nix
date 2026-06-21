@@ -55,6 +55,14 @@
           printf '\033[30;43m[WARNING]\033[0m service missing: %s\n' "$service"
         fi
       }
+
+      check_non_nixos_gpu() {
+        if [ -L /etc/tmpfiles.d/non-nixos-gpu.conf ]; then
+          echo "[OK] non-nixos-gpu-setup has been run"
+        else
+          printf '\033[30;43m[WARNING]\033[0m run: sudo non-nixos-gpu-setup\n'
+        fi
+      }
   
       echo "=========================================="
       echo "===== Home Manager Environment Check ====="
@@ -65,6 +73,8 @@
   
       check_service mouseless.service
       check_service singbox.service
+
+      check_non_nixos_gpu
   
       echo "=========================================="
       echo "=========================================="
