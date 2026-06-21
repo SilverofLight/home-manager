@@ -3,10 +3,14 @@
 {
   home.packages = with pkgs; [
     mpd
+    mpc
   ];
 
-  home.file.".mpd/mpd.conf".source =
-    ../../dotfiles/mpd/mpd.conf;
+  # home.file.".mpd/mpd.conf".source =
+  #   ../../dotfiles/mpd/mpd.conf;
+
+  home.file.".config/mpd".source =
+    ../../dotfiles/mpd;
 
   systemd.user.services.mpd = {
     Unit = {
