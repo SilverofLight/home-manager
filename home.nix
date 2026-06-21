@@ -15,6 +15,7 @@
     ./modules/cli/fastfetch.nix
     ./modules/cli/tmux.nix
     ./modules/cli/mpd.nix
+    ./modules/cli/rmpc.nix
 
     ./modules/dev/neovim.nix
 
