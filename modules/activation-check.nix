@@ -3,7 +3,7 @@
 {
   # 每次 switch 之后自动执行的命令
   home.activation.activation_check =
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    lib.hm.dag.entryAfter [ "reloadSystemd" ] ''
       echo "home-manager activated"
       check_cmd() {
         local cmd="$1"
