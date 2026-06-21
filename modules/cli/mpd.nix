@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     mpd
     mpc
+    mpd-mpris
   ];
 
   # home.file.".mpd/mpd.conf".source =
