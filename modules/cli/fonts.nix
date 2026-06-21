@@ -5,5 +5,5 @@
         jetbrains-mono
         font-awesome
         texlivePackages.opensans
-    ]
+    ];
 }
