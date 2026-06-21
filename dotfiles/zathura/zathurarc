@@ -1,0 +1,92 @@
+set selection-clipboard clipboard
+
+# keep several lines of text when
+# scrolling a screenful
+set scroll-full-overlap 0.2
+
+# see documentation for details
+set scroll-page-aware true
+set window-title-basename true
+# set adjust-open height
+set statusbar-home-tilde true
+set vertical-center true
+set synctex true
+set zoom-step 3
+
+map [normal] n scroll down
+map [normal] e scroll up
+map [normal] i scroll right
+map [normal] h scroll left
+map [normal] <Left> scroll left
+map [normal] <Up> scroll up
+map [normal] <Down> scroll down
+map [normal] <Right> scroll right
+# map [normal] k scroll full-down
+map [normal] k search forward
+map [normal] K search backward
+map [normal] <C-l> scroll full-up
+map [normal] p scroll full-up
+map [normal] d scroll full-down
+map [normal] l scroll full-up
+
+map [normal] gg goto top
+map [normal] G goto bottom
+
+map [normal] a adjust_window best-fit
+map [normal] w adjust_window width
+
+map [normal] m mark_add
+
+map [normal] <C-P> print
+map [normal] u toggle_index
+
+map [index] n navigate_index down
+map [index] e navigate_index up
+map [index] i feedkeys l
+map [index] I feedkeys L
+
+set notification-error-bg       rgba(255,85,85,1)     # Red
+set notification-error-fg       rgba(248,248,242,1)   # Foreground
+set notification-warning-bg     rgba(255,184,108,1)   # Orange
+set notification-warning-fg     rgba(68,71,90,1)      # Selection
+set notification-bg             rgba(40,42,54,1)      # Background
+set notification-fg             rgba(248,248,242,1)   # Foreground
+
+set completion-bg               rgba(40,42,54,1)      # Background
+set completion-fg               rgba(98,114,164,1)    # Comment
+set completion-group-bg         rgba(40,42,54,1)      # Background
+set completion-group-fg         rgba(98,114,164,1)    # Comment
+set completion-highlight-bg     rgba(68,71,90,1)      # Selection
+set completion-highlight-fg     rgba(248,248,242,1)   # Foreground
+
+set index-bg                    rgba(40,42,54,1)      # Background
+set index-fg                    rgba(248,248,242,1)   # Foreground
+set index-active-bg             rgba(68,71,90,1)      # Current Line
+set index-active-fg             rgba(248,248,242,1)   # Foreground
+
+set inputbar-bg                 rgba(40,42,54,1)      # Background
+set inputbar-fg                 rgba(248,248,242,1)   # Foreground
+set statusbar-bg                rgba(40,42,54,1)      # Background
+set statusbar-fg                rgba(248,248,242,1)   # Foreground
+
+set highlight-color             rgba(255,184,108,0.5) # Orange
+set highlight-active-color      rgba(255,121,198,0.5) # Pink
+
+set default-bg                  rgba(40,42,54,1)      # Background
+set default-fg                  rgba(248,248,242,1)   # Foreground
+
+set render-loading              true
+set render-loading-fg           rgba(40,42,54,1)      # Background
+set render-loading-bg           rgba(248,248,242,1)   # Foreground
+
+#
+# Recolor mode settings
+#
+
+set recolor-lightcolor          rgba(40,42,54,1)      # Background
+set recolor-darkcolor           rgba(248,248,242,1)   # Foreground
+
+#
+# Startup options
+#
+# set recolor true

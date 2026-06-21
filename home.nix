@@ -30,6 +30,7 @@
     ./modules/desktop/wlogout.nix
     ./modules/desktop/wallpaper.nix
     ./modules/desktop/mouseless.nix
+    ./modules/desktop/zathura.nix
   ];
 
   # 每次 switch 之后自动执行的命令
