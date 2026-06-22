@@ -45,5 +45,7 @@
     wf-recorder
 
     yt-dlp
+
+    bitwarden-cli
   ];
 }
