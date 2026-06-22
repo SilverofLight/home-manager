@@ -10,11 +10,11 @@
   # home.file.".mpd/mpd.conf".source =
   #   ../../dotfiles/mpd/mpd.conf;
 
-  xdg.configFile."mpd".source = ../../dotfiles/mpd;
-  # home.activation.linkMpdDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
-  #   ln -sfT $HOME/.config/home-manager/dotfiles/mpd/ $HOME/.config/mpd
-  #   echo "[OK] link mpd dotfiles successfully"
-  # '';
+  # xdg.configFile."mpd".source = ../../dotfiles/mpd;
+  home.activation.linkMpdDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ln -sfT $HOME/.config/home-manager/dotfiles/mpd/ $HOME/.config/mpd
+    echo "[OK] link mpd dotfiles successfully"
+  '';
 
   systemd.user.services.mpd = {
     Unit = {
