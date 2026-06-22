@@ -170,4 +170,5 @@ binds {
     Mod+C { spawn-sh "~/.config/niri/scripts/niri_scratchpad.py -t Weixin -s '~/Appimages/WeChatLinux_x86_64.AppImage'"; }
     Mod+Q { spawn-sh "~/.config/niri/scripts/niri_scratchpad.py -t QQ -s 'linuxqq'"; }
     Mod+G { spawn-sh "~/.config/niri/scripts/bw.py"; }
+    Mod+T { spawn-sh "wl-kbptr"; }
 }
