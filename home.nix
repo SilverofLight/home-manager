@@ -35,6 +35,7 @@
     ./modules/desktop/mouseless.nix
     ./modules/desktop/zathura.nix
     ./modules/desktop/swayimg.nix
+    ./modules/desktop/wl-kbptl.nix
 
     ./modules/activation-check.nix
   ];
