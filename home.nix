@@ -36,6 +36,7 @@
     ./modules/desktop/zathura.nix
     ./modules/desktop/swayimg.nix
     ./modules/desktop/wl-kbptr.nix
+    ./modules/desktop/fcitx5.nix
 
     ./modules/activation-check.nix
   ];
