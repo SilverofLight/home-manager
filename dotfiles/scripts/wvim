@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# author: Silver Lee
+# date: 2024/12/16
+# description: use wofi to select a config file, and use kitty + nvim open it
+# requirements: wofi, nvim, kitty
+
+# 检查文件列表是否存在
+if [ ! -f "$HOME/Templates/wvim" ]; then
+    notify-send "Wvim Error" "File list not found. Please run gen_wvim first."
+    exit 1
+fi
+
+# 从文件中读取列表并使用wofi显示
+selected_file=$(cat "$HOME/Templates/wvim" | wofi -dmenu --prompt "Wvim")
+
+# 如果用户选择了文件，需要将~重新替换回$HOME后再打开
+if [ -n "$selected_file" ]; then
+    real_path=$(echo "$selected_file" | sed "s|~|$HOME|g")
+    kitty -e nvim "$real_path"
+fi

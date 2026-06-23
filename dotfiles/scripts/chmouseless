@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# require: mouseless
+
+systemctl stop mouseless.service
+mouseless -c /home/silver/.config/mouseless/config_q.yaml

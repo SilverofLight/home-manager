@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# author: Silver Lee
+# date: 2024/12/16
+# description: generate file list for wvim
+# requirements: none
+
+# Create Templates directory if it doesn't exist
+mkdir -p "$HOME/Templates"
+
+search_path=("$HOME/mydots/dwm/.dwm/bar.sh"
+            "$HOME/mydots/dwm/.dwm/autostart.sh"
+            "$HOME/mydots/dwm/.dwm/reflashBar.sh"
+            "$HOME/mydots/btop/.config/btop/btop.conf"
+            "$HOME/mydots/mpv/.config/mpv/"
+            "$HOME/mydots/cava/.config/cava/config"
+            "$HOME/mydots/fish/.config/fish/config.fish"
+            "$HOME/mydots/hypr/.config/hypr/env.conf"
+            "$HOME/mydots/hypr/.config/hypr/rule.conf"
+            "$HOME/mydots/hypr/.config/hypr/plugin.conf"
+            "$HOME/mydots/hypr/.config/hypr/startup.conf"
+            "$HOME/mydots/hypr/.config/hypr/hyprland.conf"
+            "$HOME/mydots/hypr/.config/hypr/keybinds.conf"
+            "$HOME/mydots/hypr/.config/hypr/scripts/"
+            "$HOME/mydots/rofi/.config/rofi/config.rasi"
+            "$HOME/mydots/tmux/.tmux.conf"
+            "$HOME/mydots/yazi/.config/yazi/yazi.toml"
+            "$HOME/mydots/yazi/.config/yazi/theme.toml"
+            "$HOME/mydots/yazi/.config/yazi/keymap.toml"
+            "$HOME/mydots/yazi/.config/yazi/package.toml"
+            "$HOME/mydots/yazi/.config/yazi/init.lua"
+            "$HOME/mydots/dunst/.config/dunst/dunstrc"
+            "$HOME/mydots/kitty/.config/kitty/kitty.conf"
+            "$HOME/mydots/picom/.config/picom/picom.conf"
+            "$HOME/mydots/zshrc/.zshrc"
+            "$HOME/mydots/cursor/.config/Cursor/User/settings.json"
+            "$HOME/mydots/fcitx5/.config/fcitx5/config"
+            "$HOME/mydots/waybar/.config/waybar/style.css"
+            "$HOME/mydots/waybar/.config/waybar/config.jsonc"
+            "$HOME/mydots/history/history"
+            "$HOME/mydots/scripts/.scripts/"
+            "$HOME/mydots/wlogout/.config/wlogout/style.css"
+            "$HOME/mydots/neofetch/.config/neofetch/neofetch"
+            "$HOME/mydots/swaylock/.config/swaylock/config"
+            "$HOME/mydots/gitconfig/.gitconfig"
+            "$HOME/mydots/alacritty/.config/alacritty/alacritty.toml"
+            "$HOME/mydots/mouseless/.config/mouseless/config.yaml"
+            "$HOME/.config/nvim/init.lua"
+            "$HOME/.config/nvim/lua/")
+
+# 创建一个临时文件列表
+files_list=""
+
+# 遍历所有路径
+for path in "${search_path[@]}"; do
+    if [ -d "$path" ]; then
+        # 如果是目录，查找所有文本文件并替换$HOME
+        files_list+=$(find "$path" -type f -exec file {} \; | grep text | cut -d: -f1 | sed "s|$HOME|~|g")
+        files_list+=$'\n'
+    elif [ -f "$path" ]; then
+        # 如果是文件，替换$HOME后添加到列表
+        files_list+=$(echo "$path" | sed "s|$HOME|~|g")
+        files_list+=$'\n'
+    fi
+done
+
+# 保存文件列表到Templates目录
+echo -e "$files_list" | sed '/^$/d' > "$HOME/Templates/wvim"
+echo "File list has been generated and saved to $HOME/Templates/wvim" 
