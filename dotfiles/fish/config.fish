@@ -1,19 +1,20 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     # deepseek key
-    set -l deep_key $(cat $HOME/Documents/keys/deepseek_key)
-    export DEEPSEEK_API_KEY=$deep_key
-    set -l groq_key $(cat $HOME/Documents/keys/groq_key)
-    export GROQ_API_KEY=$groq_key
-    set -l gemini_key $(cat $HOME/Documents/keys/GEMINI_API)
-    export GEMINI_API_KEY=$gemini_key
-    set -l qwen $(cat $HOME/Documents/keys/qwen_key)
-    export QWEN_API_KEY=$qwen
-    export DASHSCOPE_API_KEY=$qwen
+    # set -l deep_key $(cat $HOME/Documents/keys/deepseek_key)
+    # export DEEPSEEK_API_KEY=$deep_key
+    # set -l groq_key $(cat $HOME/Documents/keys/groq_key)
+    # export GROQ_API_KEY=$groq_key
+    # set -l gemini_key $(cat $HOME/Documents/keys/GEMINI_API)
+    # export GEMINI_API_KEY=$gemini_key
+    # set -l qwen $(cat $HOME/Documents/keys/qwen_key)
+    # export QWEN_API_KEY=$qwen
+    # export DASHSCOPE_API_KEY=$qwen
+    #
+    # export CLASH_PASSWORD=$(cat $HOME/Documents/keys/mihomo_select)
+    # export BOOKMARKS_KEY=$(cat $HOME/Documents/keys/bookmarks_key)
 
-    export CLASH_PASSWORD=$(cat $HOME/Documents/keys/mihomo_select)
-    export BOOKMARKS_KEY=$(cat $HOME/Documents/keys/bookmarks_key)
-
+    source $HOME/Documents/keys/api_keys.fish
     export BW_SESSION=$(cat $HOME/Documents/keys/bitwarden)
 
     set -U fish_user_paths $HOME/.local/bin $fish_user_paths

@@ -39,6 +39,7 @@
   
       check_cmd niri
       check_cmd qutebrowser
+      check_cmd fcitx5
   
       check_service mouseless.service
       check_service singbox.service
