@@ -9,7 +9,8 @@ import sys
 # 密码在 bw 中
 
 home = os.getenv('HOME')
-database = os.path.join(home, '.config/hypr/scripts/bookmarks.db')
+# database = os.path.join(home, '.config/hypr/scripts/bookmarks.db')
+database = os.path.join(home, '.cache/bookmarks.db')
 
 # 连接数据库（文件不存在则创建）
 try:

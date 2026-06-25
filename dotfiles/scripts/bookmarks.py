@@ -11,7 +11,7 @@ import sys
 from tabulate import tabulate
 
 home = os.getenv('HOME')
-database = os.path.join(home, '.config/hypr/scripts/bookmarks.db')
+database = os.path.join(home, '.cache/bookmarks.db')
 # database = os.path.join(home, 'Documents/test/bookmarks.db')
 
 def add_bookmark(url):

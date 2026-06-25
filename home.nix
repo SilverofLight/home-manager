@@ -20,6 +20,7 @@
     ./modules/cli/kd.nix
     ./modules/cli/fonts.nix
     ./modules/cli/scripts.nix
+    ./modules/cli/bookmarks.nix
 
     ./modules/dev/neovim.nix
 
