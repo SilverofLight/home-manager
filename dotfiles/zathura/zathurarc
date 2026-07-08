@@ -28,6 +28,8 @@ map [normal] <C-l> scroll full-up
 map [normal] p scroll full-up
 map [normal] d scroll full-down
 map [normal] l scroll full-up
+map [normal] [ scroll full-up
+map [normal] ] scroll full-down
 
 map [normal] gg goto top
 map [normal] G goto bottom
