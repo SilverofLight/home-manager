@@ -68,11 +68,11 @@ awwwbg = [
   { run = '$HOME/.scripts/awww.sh %S', desc = "set bg", for = "linux"},
 ]
 copy = [
-  { run = 'wl-copy < "$s"', desc = "wl-copy", for = "linux" },
+  { run = 'wl-copy < "%s"', desc = "wl-copy", for = "linux" },
 ]
 
 pinme = [
-  { run = 'pinme.py "$s"', desc = "pinme", for = "linux" }
+  { run = 'pinme.py "%s"', desc = "pinme", for = "linux" }
 ]
 
 [open]
