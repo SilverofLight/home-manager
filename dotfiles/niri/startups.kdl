@@ -2,6 +2,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "dunst"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1" // 认证程序
 spawn-at-startup "awww-daemon"
 // spawn-sh-at-startup "awww img ~/Pictures/wallpaper/线条小狗.jpg"
 spawn-sh-at-startup "fcitx5 -d"
