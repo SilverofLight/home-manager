@@ -10,6 +10,14 @@ echo $QUTE_SELECTED_TEXT > "$DICT_TEMP" 2>&1
 
 word=$(cat "$DICT_TEMP")
 
+# 如果开头不是数字/字母/汉字，删除开头符号
+if [[ ! "$word" =~ ^[0-9a-zA-Z] ]]; then
+    first_char="${word:0:1}"
+    if [[ $(printf '%d' "'$first_char") -lt 128 ]]; then
+        word="${word:1}"
+    fi
+fi
+
 TERM="kitty -T Floating_Term --hold"
 CMD=""
 
