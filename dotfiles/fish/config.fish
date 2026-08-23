@@ -50,6 +50,8 @@ if status is-interactive
     alias ta="tmux attach"
     alias tn="tmux new -s"
     alias tt="tmux attach -t"
+    alias h="herdr"
+    alias hs="herdr --session"
     alias en="~/.scripts/touchEtyma.sh"
     alias link="scrcpy"
     # alias s="fastfetch"
