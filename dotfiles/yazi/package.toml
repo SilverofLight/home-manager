@@ -1,22 +1,22 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "38efe09"
+rev = "72f9e3c"
 hash = "7a4b4237223aaa94e589d1c01a23542a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "38efe09"
-hash = "88e56a64b7ce7c4314427452343fef17"
+rev = "72f9e3c"
+hash = "5bb0bfab901d3601c370eafdd66edd31"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "38efe09"
-hash = "7b625412411be411153886894d9acaf"
+rev = "72f9e3c"
+hash = "f281261ff04ad7ec867c3f802a50835f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "38efe09"
-hash = "f0c8c378184d5f8abd1b095a443d336d"
+rev = "72f9e3c"
+hash = "87472b05a8c420100f6a2b9cde1e7746"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
@@ -30,8 +30,8 @@ hash = "6974cc8d2765f4d4b234e82b2b28e949"
 
 [[plugin.deps]]
 use = "KKV9/compress"
-rev = "e60e122"
-hash = "fbaf0adc8efc59555b748d36aab62d40"
+rev = "80e5268"
+hash = "868db729374b97871bc30b96d0e9061f"
 
 [flavor]
 deps = []
