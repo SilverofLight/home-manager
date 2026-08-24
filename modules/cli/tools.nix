@@ -23,6 +23,7 @@
     rclone
     micromamba
     nodejs
+    pnpm
     stow
     awww
     blueman
