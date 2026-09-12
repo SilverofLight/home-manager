@@ -2,7 +2,7 @@
 """用 Qwen3-ASR-GGUF 识别刚录下的音频。
 
 本机是 AMD RX 9070：Encoder 走 ONNX CPU，Decoder 走 llama.cpp Vulkan。
-首次使用前需要 third_party/Qwen3-ASR-GGUF、models/ 下的 0.6B 权重，
+首次使用前需要 third_party/Qwen3-ASR-GGUF、~/.models/ 下的 0.6B 权重，
 以及 inference/bin 里的 Vulkan 版 libllama。
 
 录音过程只缓存 PCM。Encoder（ONNX CPU）可常驻；两个 GGUF 默认在松开按钮后
@@ -25,7 +25,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent
 VENDOR_DIR = ROOT / "third_party" / "Qwen3-ASR-GGUF"
-MODEL_DIR = ROOT / "models"
+MODEL_DIR = Path.home() / ".models"
 BIN_DIR = VENDOR_DIR / "qwen_asr_gguf" / "inference" / "bin"
 PATCH_LLAMA = ROOT / "patches" / "llama.py"
 POLISH_MODEL_FN = "Qwen3-0.6B-Q8_0.gguf"

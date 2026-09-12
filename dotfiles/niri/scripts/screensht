@@ -1,0 +1,71 @@
+#!/bin/bash
+
+set -o pipefail
+export GRIMBLAST_EDITOR="swappy -f"
+
+# Directory
+_SCREENSHOT_DIR_=$HOME/Pictures/Screenshots
+
+function check() {
+    if [[ $? -eq 1 && ${PIPESTATUS[0]} -eq 1 ]]; then
+        dunstify -u critical -t 3000 -a "Screenshot Tool" "Failed"
+        exit 1
+    fi
+}
+
+# Check save directory
+function check_dir() {
+    if [[ ! -d "$_SCREENSHOT_DIR_" ]]; then
+        mkdir -p "$_SCREENSHOT_DIR_"
+    fi
+}
+
+function take_screenshot() {
+    check_dir
+    
+    _timestamp_=$(date +%Y-%m-%d-%H-%M-%S)
+    _screenshot_command_="$1"
+    _notif_message_="$2"
+
+    if [ "$1" == "grimblast copysave output" ]; then
+        # Execute screenshot command
+        $_screenshot_command_ $_SCREENSHOT_DIR_/${_timestamp_}.png > /dev/null 2>&1
+        check
+    elif [ "$1" == "grimblast copysave area" ]; then
+        wayfreeze --hide-cursor --after-freeze-cmd "$_screenshot_command_ $_SCREENSHOT_DIR_/${_timestamp_}.png > /dev/null 2>&1; killall wayfreeze"
+    elif [ "$1" == "grimblast edit area" ]; then
+        wayfreeze --hide-cursor --after-freeze-cmd "$_screenshot_command_ $_SCREENSHOT_DIR_/${_timestamp_}.png > /dev/null 2>&1; killall wayfreeze"
+    fi
+
+    sleep 0.05
+    if [ -f "$_SCREENSHOT_DIR_/${_timestamp_}.png" ]; then
+      # Send notification
+      # dunstify -t 3000 "Screenshot Tool" "$_notif_message_" -a "Screenshot Tool"
+      paplay ~/.config/hypr/src/screensht.mp3
+    else
+      exit 1
+    fi
+    
+}
+
+# Check parameters
+if [ -z "$1" ] || ([ "$1" != 'full' ] && [ "$1" != 'area' ] && [ "$1" != "edit" ]); then
+    echo "
+    Parameter required:
+    area    - Area screenshot
+    full    - Full screenshot
+    edit    - Edit screenshot
+    Example:
+    ./screensht area
+    ./screensht full
+    "
+elif [ "$1" = 'full' ]; then
+    msg="Full screenshot saved and copied to clipboard!"
+    take_screenshot 'grimblast copysave output' "${msg}"
+elif [ "$1" = 'area' ]; then
+    msg='Area screenshot saved and copied to clipboard!'
+    take_screenshot 'grimblast copysave area' "${msg}"
+elif [ "$1" = 'edit' ]; then
+    msg='Area screenshot edited ended'
+    take_screenshot 'grimblast edit area' "${msg}"
+fi
